@@ -1,6 +1,6 @@
 package com.example.form;
 
-public class UserInsert {
+public class UserInsertForm {
 
 	//性別
 	private Integer gender;
@@ -17,7 +17,7 @@ public class UserInsert {
 	//住所
 	private String address;
 	//パスワード
-	private String paaword;
+	private String password;
 	//確認用パスワード
 	private String confirmPassword;
 	
@@ -64,11 +64,11 @@ public class UserInsert {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getPaaword() {
-		return paaword;
+	public String getPassword() {
+		return password;
 	}
-	public void setPaaword(String paaword) {
-		this.paaword = paaword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getConfirmPassword() {
 		return confirmPassword;
@@ -81,7 +81,7 @@ public class UserInsert {
 	@Override
 	public String toString() {
 		return "UserInsert [gender=" + gender + ", year=" + year + ", month=" + month + ", day=" + day + ", email="
-				+ email + ", zipCode=" + zipCode + ", address=" + address + ", paaword=" + paaword
+				+ email + ", zipCode=" + zipCode + ", address=" + address + ", password=" + password
 				+ ", confirmPassword=" + confirmPassword + "]";
 	}
 }
