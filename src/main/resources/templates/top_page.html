@@ -20,7 +20,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="./toppage.html">MOZOTOWN</a>
+        <a class="navbar-brand" th:href="@{/item}">MOZOTOWN</a>
         <form action="#" method="get" class="col-5">
           <div class="col-auto">
             <div class="input-group mb-1">
@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="./login.html">ログイン</a>
+              <a class="nav-link" aria-current="page" th:href="@{/user/toLogin}">ログイン</a>
             </li>
             <li class="nav-item">
                  <a class="nav-link" href="#!">お気に入り</a>

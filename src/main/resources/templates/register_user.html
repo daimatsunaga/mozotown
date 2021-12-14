@@ -11,14 +11,14 @@
   <!-- ヘッダー -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container">
-        <a class="navbar-brand" href="./toppage.html" style="font-size: 24px;">MOZOTOWN</a>
+        <a class="navbar-brand" th:href="@{/item}" style="font-size: 24px;">MOZOTOWN</a>
     </div>
   </nav>
 
   <!-- パンくずリスト -->
   <ol class="container">
     <div class="row">
-      <li class="breadcrumb-item"><a href="./toppage.html">MOZOTOWN</a></li>
+      <li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
       <li class="breadcrumb-item active" aria-current="page">新規会員登録</li>
     </div>
   </ol>

@@ -11,14 +11,14 @@
   <!-- ヘッダー -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container">
-        <a class="navbar-brand" href="./toppage.html" style="font-size: 24px;">MOZOTOWN</a>
+        <a class="navbar-brand" th:href="@{/item}" style="font-size: 24px;">MOZOTOWN</a>
     </div>
   </nav>
 
   <!-- パンくずリスト -->
   <ol class="container">
     <div class="row">
-      <li class="breadcrumb-item"><a href="#">MOZOTOWN</a></li>
+      <li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
       <li class="breadcrumb-item active" aria-current="page">ログイン</li>
     </div>
   </ol>
@@ -70,7 +70,7 @@
 
 
           <div class="container" style="text-align: center;">
-            <a class="" href="./register_user.html" style="font-size: 15px;">はじめてご利用の方（新規会員登録）</a>
+            <a class="" th:href="@{/user/toInsert}" style="font-size: 15px;">はじめてご利用の方（新規会員登録）</a>
           </div>
         
         </fieldset>
