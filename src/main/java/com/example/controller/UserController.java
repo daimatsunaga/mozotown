@@ -25,14 +25,15 @@ public class UserController {
 	public UserInsertForm setUpForm() {
 		return new UserInsertForm();
 	}
-	@GetMapping("")
-	public String toTopPage() {
-		return "top_page";
-	}
 	
 	@GetMapping("/toInsert")
 	public String toInsert() {
 		return "register_user";
+	}
+	
+	@GetMapping("/toLogin")
+	public String toLogin() {
+		return "login";
 	}
 	
 	
