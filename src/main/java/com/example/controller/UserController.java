@@ -81,4 +81,21 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/item";
 	}
- }
+	
+	@GetMapping("/detail")
+	public String detail() {
+		return "user_detail";
+	}
+	
+	@GetMapping("/toLeave")
+	public String leave() {
+		return "leave";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteUser(Integer id) {
+		service.deleteById(id);
+		session.invalidate();
+		return "redirect:/item";
+	}
+  }

@@ -19,4 +19,8 @@ public class UserService {
 	public User login(String email) {
 		return mapper.findByEmail(email);
 	}
+	
+	public void deleteById(Integer id) {
+		mapper.deleteById(id);
+	}
 }

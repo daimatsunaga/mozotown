@@ -23,6 +23,9 @@
 		select * from users where email = #{email}
 	</select>
 	
+	<delete id="deleteById">
+		delete from users where id = #{id}
+	</delete>
 	
 
 
