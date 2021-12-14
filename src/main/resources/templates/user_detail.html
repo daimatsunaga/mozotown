@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新規会員登録 - MOZOTOWN</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+  <!-- ヘッダー -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/item}" style="font-size: 24px;">MOZOTOWN</a>
+    </div>
+  </nav>
+
+  <!-- パンくずリスト -->
+  <ol class="container">
+    <div class="row">
+      <li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
+      <li class="breadcrumb-item active" aria-current="page">登録情報</li>
+    </div>
+  </ol>
+
+  <div class="container mb-4">
+    <div class="row">
+      <img style="width: 50px;" src="/img/新規登録.png" alt="新規登録アイコン">
+      <h1 th:text="${session.userName} + 様" class="align-self-end" style="font-size: 24px;">〇〇様の登録情報</h1>
+    </div>
+  </div>
+  <div class="container d-flex mb-3">
+    <div class="container row">
+      <div class="col-2">
+      	<div>
+          <b>会員登録情報</b>
+        </div>
+        <ul class="nav flex-column rounded">
+          <li class="nav-item">
+            <a class="nav-link" style="color: #808080; font-size: 13px;" href="#">会員登録情報</a>
+          </li>
+        </ul>
+        <div>
+          <b>退会</b>
+        </div>
+        <ul class="nav flex-column rounded">
+          <li class="nav-item">
+            <a class="nav-link" style="color: #808080; font-size: 13px;" th:href="@{/user/toLeave}">退会手続き</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-10 p-5" style="background-color: #f0f0f0;">
+        <table class="table">
+            <div class="mb-3" style="font-size: 20px;">会員登録情報</div>
+          <tbody style="color: #808080;">
+            <tr>
+              <th class="col-4" style="vertical-align: middle;" scope="row">基本情報</th>
+              <td>
+                <div>男性</div>
+                <div>2020年8月5日</div>
+                <div>〒471-0833</div>
+                <div>愛知県豊田市</div>
+              </td>
+              <td style="vertical-align: middle;">
+                <form action="#" method="GET">
+                  <button class="btn btn-outline-primary">変更</button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <th style="vertical-align: middle;" scope="row">メールアドレス</th>
+              <td style="vertical-align: middle;">
+                <div>test@gmail.com</div>
+              </td>
+              <td style="vertical-align: middle;"> 
+                <form action="#" method="GET">
+                  <button class="btn btn-outline-primary">変更</button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <th style="vertical-align: middle;" scope="row">パスワード</th>
+              <td style="vertical-align: middle;">
+                ******** <span style="font-size: 5px;">※セキュリティのためパスワードは非表示となっています。</span>
+              </td>
+              <td style="vertical-align: middle;">
+                <form action="#" method="GET">
+                  <button class="btn btn-outline-primary">変更</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  <!-- Footer-->
+  <footer class="py-5" style="background-color: #f0f0f0;">
+    <div class="container"><p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright &copy; Dai Matsunaga Website 2021</p></div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>
