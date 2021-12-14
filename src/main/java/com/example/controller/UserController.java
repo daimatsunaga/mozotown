@@ -67,10 +67,18 @@ public class UserController {
 	@PostMapping("/login")
 	public String login(UserLoginForm form) {
 		User user = service.login(form.getEmail());
-		int index = form.getEmail().indexOf("@");
-		String userName = form.getEmail().substring(0, index);
+		//emailの＠以前を切り出し
+		int index = user.getEmail().indexOf("@");
+		String userName = user.getEmail().substring(0, index);
+		//セッションにそれぞれ保存
 		session.setAttribute("userName", userName);
 		session.setAttribute("user", user);
+		return "redirect:/item";
+	}
+	
+	@GetMapping("/logout")
+	public String logout() {
+		session.invalidate();
 		return "redirect:/item";
 	}
  }
