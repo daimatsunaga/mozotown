@@ -3,11 +3,27 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
 <mapper namespace="com.example.repository.UserMapper">
-
-   <insert id="insert">
-       insert into users(gender, birthday, email, zip_code, address, password) 
-       values(#{gender},#{birthday},#{email},#{zipCode},#{address},#{password})
-   </insert>
+	
+<!-- 	<resultMap type="com.example.domain.User" id="user">
+		<id column="id" property="id"/>
+		<result column="gender" property="gender"/>
+		<result column="birthday" property="birthday"/>
+		<result column="email" property="email"/> 
+		<result column="zip_code" property="zipCode"/>
+		<result column="address" property="address"/>
+		<result column="password" property="password"/>  
+	</resultMap> -->
+	
+	<insert id="insert">
+	   insert into users(gender, birthday, email, zip_code, address, password) 
+	   values(#{gender},#{birthday},#{email},#{zipCode},#{address},#{password})
+	</insert>
+	
+	<select id="findByEmail" resultType="com.example.domain.User">
+		select * from users where email = #{email}
+	</select>
+	
+	
 
 
 </mapper>

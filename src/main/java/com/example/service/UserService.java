@@ -15,4 +15,8 @@ public class UserService {
 	public void insert(User user) {
 		mapper.insert(user);
 	}
+	
+	public User login(String email) {
+		return mapper.findByEmail(email);
+	}
 }

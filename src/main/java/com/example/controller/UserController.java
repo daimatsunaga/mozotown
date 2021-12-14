@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import com.example.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	private UserService service;
@@ -56,12 +61,16 @@ public class UserController {
 		//insertメソッドを呼び出す
 		service.insert(user);
 		
-		return "top_page";
+		return "redirect:/item";
 	}
 	
 	@PostMapping("/login")
 	public String login(UserLoginForm form) {
-		System.out.println(form);
-		return "top_page";
+		User user = service.login(form.getEmail());
+		int index = form.getEmail().indexOf("@");
+		String userName = form.getEmail().substring(0, index);
+		session.setAttribute("userName", userName);
+		session.setAttribute("user", user);
+		return "redirect:/item";
 	}
  }

@@ -9,4 +9,7 @@ public interface UserMapper {
 
 	//ユーザー登録
 	public void insert(User user);
+	
+	//ユーザー取得（１件）
+	public User findByEmail(String email);
 }
