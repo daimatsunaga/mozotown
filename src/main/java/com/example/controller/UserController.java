@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
 import com.example.form.UserInsertForm;
+import com.example.form.UserLoginForm;
 import com.example.service.UserService;
 
 @Controller
@@ -22,8 +23,13 @@ public class UserController {
 	private UserService service;
 	
 	@ModelAttribute
-	public UserInsertForm setUpForm() {
+	public UserInsertForm setUpInsertForm() {
 		return new UserInsertForm();
+	}
+	
+	@ModelAttribute
+	public UserLoginForm setUpLoginForm() {
+		return new UserLoginForm();
 	}
 	
 	@GetMapping("/toInsert")
@@ -36,7 +42,6 @@ public class UserController {
 		return "login";
 	}
 	
-	
 	@PostMapping("/insert")
 	public String insert(UserInsertForm form) {
 		//フォームの値をdomainにコピー
@@ -48,11 +53,15 @@ public class UserController {
 		Date birthday = Date.valueOf(date);
 		user.setBirthday(birthday);
 		
-		System.out.println(user);
-		
 		//insertメソッドを呼び出す
 		service.insert(user);
 		
+		return "top_page";
+	}
+	
+	@PostMapping("/login")
+	public String login(UserLoginForm form) {
+		System.out.println(form);
 		return "top_page";
 	}
  }

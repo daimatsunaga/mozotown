@@ -31,7 +31,7 @@
 
   <div class="container mb-3">
     <div class="row d-flex justify-content-center">
-      <form class="col-6 p-5 rounded" method="post" action="item_list_pizza.html" style="background-color: #f0f0f0;">
+      <form class="col-6 p-5 rounded" method="post" th:action="@{/user/login}" style="background-color: #f0f0f0;">
         <fieldset>
           <div class="form-group">
             <label for="inputEmail">メールアドレス:</label
@@ -42,6 +42,7 @@
               >メールアドレスを入力してください</label
             >
             <input
+              name="email"
               type="text"
               id="inputEmail"
               class="form-control"
@@ -57,6 +58,7 @@
               >パスワードを入力してください</label
             >
             <input
+              name="password"
               type="text"
               id="inputPassword"
               class="form-control"
