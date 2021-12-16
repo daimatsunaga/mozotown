@@ -12,46 +12,7 @@
 
 </head>
 <body>
-	<!-- ヘッダー -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" th:href="@{/item}">MOZOTOWN</a>
-			<form action="#" method="get" class="col-5">
-				<div class="col-auto">
-					<div class="input-group mb-1">
-						<input type="text" class="form-control" id="inlineFormInputGroup"
-							placeholder="全てのアイテムから探す" />
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</div>
-				</div>
-			</form>
-			<div class="collapse navbar-collapse d-flex justify-content-end"
-				id="navbarSupportedContent">
-				<ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
-					<li th:if="${session.userName == null}" class="nav-item"><a
-						class="nav-link" aria-current="page" th:href="@{/user/toLogin}">ログイン</a>
-					</li>
-					<li th:unless="${session.userName == null}"
-						class="nav-item dropdown">
-						<div th:text="${session.userName} + 様"
-							class="nav-link dropdown-toggle" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">ユーザー名</div>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" th:href="@{/user/detail}">登録情報</a></li>
-							<li><a class="dropdown-item" th:href="@{/user/logout}">ログアウト</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#!">お気に入り</a></li>
-				</ul>
-				<form class="d-flex">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i> Cart <span
-							class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-					</button>
-				</form>
-			</div>
-		</div>
-	</nav>
+	<span th:insert="fragment_header::frag_header"></span>
 
 	<!-- パンくずリスト -->
 	<ol class="container">

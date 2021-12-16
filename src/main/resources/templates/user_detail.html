@@ -1,150 +1,119 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新規会員登録 - MOZOTOWN</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新規会員登録 - MOZOTOWN</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
 
 </head>
 <body>
-  <!-- ヘッダー -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" th:href="@{/item}">MOZOTOWN</a>
-			<form action="#" method="get" class="col-5">
-				<div class="col-auto">
-					<div class="input-group mb-1">
-						<input type="text" class="form-control" id="inlineFormInputGroup"
-							placeholder="全てのアイテムから探す" />
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</div>
+	<span th:insert="fragment_header::frag_header"></span>
+
+	<!-- パンくずリスト -->
+	<ol class="container">
+		<div class="row">
+			<li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
+			<li class="breadcrumb-item active" aria-current="page">登録情報</li>
+		</div>
+	</ol>
+
+	<div class="container mb-4">
+		<div class="row">
+			<img style="width: 50px;" src="/img/新規登録.png" alt="新規登録アイコン">
+			<h1 th:text="${session.userName} + 様" class="align-self-end"
+				style="font-size: 24px;">〇〇様の登録情報</h1>
+		</div>
+	</div>
+	<div class="container d-flex mb-3">
+		<div class="container row">
+			<div class="col-2">
+				<div>
+					<b>会員登録情報</b>
 				</div>
-			</form>
-			<div class="collapse navbar-collapse d-flex justify-content-end"
-				id="navbarSupportedContent">
-				<ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
-					<li th:if="${session.userName == null}" class="nav-item"><a
-						class="nav-link" aria-current="page" th:href="@{/user/toLogin}">ログイン</a>
-					</li>
-					<li th:unless="${session.userName == null}"
-						class="nav-item dropdown">
-						<div th:text="${session.userName} + 様"
-							class="nav-link dropdown-toggle" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">ユーザー名</div>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" th:href="@{/user/detail}">登録情報</a></li>
-							<li><a class="dropdown-item" th:href="@{/user/logout}">ログアウト</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#!">お気に入り</a></li>
+				<ul class="nav flex-column rounded">
+					<li class="nav-item"><a class="nav-link"
+						style="color: #808080; font-size: 13px;" href="#">会員登録情報</a></li>
 				</ul>
-				<form class="d-flex">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i> Cart <span
-							class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-					</button>
-				</form>
+				<div>
+					<b>退会</b>
+				</div>
+				<ul class="nav flex-column rounded">
+					<li class="nav-item"><a class="nav-link"
+						style="color: #808080; font-size: 13px;"
+						th:href="@{/user/toLeave}">退会手続き</a></li>
+				</ul>
+			</div>
+
+			<div class="col-10 p-5" style="background-color: #f0f0f0;">
+				<table class="table">
+					<div class="mb-3" style="font-size: 20px;">会員登録情報</div>
+					<tbody style="color: #808080;">
+						<tr>
+							<th class="col-4" style="vertical-align: middle;" scope="row">基本情報</th>
+							<td>
+								<div th:if="${session.user.gender == 1}" th:text="男性">男性</div>
+								<div th:if="${session.user.gender == 2}" th:text="女性">女性</div>
+								<div th:if="${session.user.gender == 3}" th:text="その他">その他</div>
+								<div
+									th:text="${#dates.format(session.user.birthday, 'yyyy年MM月dd日')}">>2020年8月5日</div>
+								<div th:text="${session.user.zipCode}">〒471-0833</div>
+								<div th:text="${session.user.address}">>愛知県豊田市</div>
+							</td>
+							<td style="vertical-align: middle;">
+								<form action="#" method="GET">
+									<button class="btn btn-outline-primary">変更</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<th style="vertical-align: middle;" scope="row">メールアドレス</th>
+							<td style="vertical-align: middle;">
+								<div th:text="${session.user.email}">test@gmail.com</div>
+							</td>
+							<td style="vertical-align: middle;">
+								<form action="#" method="GET">
+									<button class="btn btn-outline-primary">変更</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<th style="vertical-align: middle;" scope="row">パスワード</th>
+							<td style="vertical-align: middle;">******** <span
+								style="font-size: 5px;">※セキュリティのためパスワードは非表示となっています。</span>
+							</td>
+							<td style="vertical-align: middle;">
+								<form action="#" method="GET">
+									<button class="btn btn-outline-primary">変更</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</nav>
-
-  <!-- パンくずリスト -->
-  <ol class="container">
-    <div class="row">
-      <li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
-      <li class="breadcrumb-item active" aria-current="page">登録情報</li>
-    </div>
-  </ol>
-
-  <div class="container mb-4">
-    <div class="row">
-      <img style="width: 50px;" src="/img/新規登録.png" alt="新規登録アイコン">
-      <h1 th:text="${session.userName} + 様" class="align-self-end" style="font-size: 24px;">〇〇様の登録情報</h1>
-    </div>
-  </div>
-  <div class="container d-flex mb-3">
-    <div class="container row">
-      <div class="col-2">
-      	<div>
-          <b>会員登録情報</b>
-        </div>
-        <ul class="nav flex-column rounded">
-          <li class="nav-item">
-            <a class="nav-link" style="color: #808080; font-size: 13px;" href="#">会員登録情報</a>
-          </li>
-        </ul>
-        <div>
-          <b>退会</b>
-        </div>
-        <ul class="nav flex-column rounded">
-          <li class="nav-item">
-            <a class="nav-link" style="color: #808080; font-size: 13px;" th:href="@{/user/toLeave}">退会手続き</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-10 p-5" style="background-color: #f0f0f0;">
-        <table class="table">
-            <div class="mb-3" style="font-size: 20px;">会員登録情報</div>
-          <tbody style="color: #808080;">
-            <tr>
-              <th class="col-4" style="vertical-align: middle;" scope="row">基本情報</th>
-              <td>
-                <div th:if="${session.user.gender == 1}" th:text="男性">男性</div>
-                <div th:if="${session.user.gender == 2}" th:text="女性">女性</div>
-                <div th:if="${session.user.gender == 3}" th:text="その他">その他</div>
-                <div th:text="${#dates.format(session.user.birthday, 'yyyy年MM月dd日')}">>2020年8月5日</div>
-                <div th:text="${session.user.zipCode}">〒471-0833</div>
-                <div th:text="${session.user.address}">>愛知県豊田市</div>
-              </td>
-              <td style="vertical-align: middle;">
-                <form action="#" method="GET">
-                  <button class="btn btn-outline-primary">変更</button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <th style="vertical-align: middle;" scope="row">メールアドレス</th>
-              <td style="vertical-align: middle;">
-                <div th:text="${session.user.email}">test@gmail.com</div>
-              </td>
-              <td style="vertical-align: middle;"> 
-                <form action="#" method="GET">
-                  <button class="btn btn-outline-primary">変更</button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <th style="vertical-align: middle;" scope="row">パスワード</th>
-              <td style="vertical-align: middle;">
-                ******** <span style="font-size: 5px;">※セキュリティのためパスワードは非表示となっています。</span>
-              </td>
-              <td style="vertical-align: middle;">
-                <form action="#" method="GET">
-                  <button class="btn btn-outline-primary">変更</button>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+	</div>
 
 
-  
 
-  <!-- Footer-->
-  <footer class="py-5" style="background-color: #f0f0f0;">
-    <div class="container"><p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright &copy; Dai Matsunaga Website 2021</p></div>
-  </footer>
+
+	<!-- Footer-->
+	<footer class="py-5" style="background-color: #f0f0f0;">
+		<div class="container">
+			<p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright
+				&copy; Dai Matsunaga Website 2021</p>
+		</div>
+	</footer>
 
 	<!-- Bootstrap core JS-->
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
 </body>
 </html>
