@@ -11,7 +11,7 @@ public class Shop {
 	//ショップ詳細
 	private String shopDetail;
 	//イメージパス
-	private String imagaPass;
+	private String imagePass;
 	//削除フラグ
 	private boolean deleted;
 	
@@ -40,11 +40,11 @@ public class Shop {
 	public void setShopDetail(String shopDetail) {
 		this.shopDetail = shopDetail;
 	}
-	public String getImagaPass() {
-		return imagaPass;
+	public String getImagePass() {
+		return imagePass;
 	}
-	public void setImagaPass(String imagaPass) {
-		this.imagaPass = imagaPass;
+	public void setImagePass(String imagePass) {
+		this.imagePass = imagePass;
 	}
 	public boolean isDeleted() {
 		return deleted;
@@ -56,6 +56,6 @@ public class Shop {
 	@Override
 	public String toString() {
 		return "Shop [id=" + id + ", shopName=" + shopName + ", shopNameKane=" + shopNameKane + ", shopDetail="
-				+ shopDetail + ", imagaPass=" + imagaPass + ", deleted=" + deleted + "]";
+				+ shopDetail + ", imagePass=" + imagePass + ", deleted=" + deleted + "]";
 	}
 }
