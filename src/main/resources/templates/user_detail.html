@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,10 +92,12 @@
             <tr>
               <th class="col-4" style="vertical-align: middle;" scope="row">基本情報</th>
               <td>
-                <div>男性</div>
-                <div>2020年8月5日</div>
-                <div>〒471-0833</div>
-                <div>愛知県豊田市</div>
+                <div th:if="${session.user.gender == 1}" th:text="男性">男性</div>
+                <div th:if="${session.user.gender == 2}" th:text="女性">女性</div>
+                <div th:if="${session.user.gender == 3}" th:text="その他">その他</div>
+                <div th:text="${#dates.format(session.user.birthday, 'yyyy年MM月dd日')}">>2020年8月5日</div>
+                <div th:text="${session.user.zipCode}">〒471-0833</div>
+                <div th:text="${session.user.address}">>愛知県豊田市</div>
               </td>
               <td style="vertical-align: middle;">
                 <form action="#" method="GET">
@@ -106,7 +108,7 @@
             <tr>
               <th style="vertical-align: middle;" scope="row">メールアドレス</th>
               <td style="vertical-align: middle;">
-                <div>test@gmail.com</div>
+                <div th:text="${session.user.email}">test@gmail.com</div>
               </td>
               <td style="vertical-align: middle;"> 
                 <form action="#" method="GET">
