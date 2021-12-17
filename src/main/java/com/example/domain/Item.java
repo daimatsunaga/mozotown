@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.util.List;
+
 public class Item {
 	
 	//id
@@ -24,6 +26,8 @@ public class Item {
 	private Integer stock;
 	//削除フラグ
 	private boolean deleted;
+	//画像
+	private List<Image> imageList;
 	
 	//ゲッターセッター
 	public Integer getId() {
@@ -92,13 +96,18 @@ public class Item {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
+	public List<Image> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<Image> imageList) {
+		this.imageList = imageList;
+	}
 	
 	//toStringのオーバーライド
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", itemInfo=" + itemInfo + ", gender="
 				+ gender + ", categoryId=" + categoryId + ", colorId=" + colorId + ", sizeId=" + sizeId + ", shopId="
-				+ shopId + ", stock=" + stock + ", deleted=" + deleted + "]";
+				+ shopId + ", stock=" + stock + ", deleted=" + deleted + ", imageList=" + imageList + "]";
 	}
-
 }
