@@ -1,0 +1,103 @@
+CREATE TABLE users(
+  id serial primary key not null,
+  gender integer not null,
+  birthday date not null,
+  email varchar(100) not null,
+  zip_code varchar(8) not null,
+  address varchar(200) not null,
+  password text not null
+);
+
+CREATE TABLE shops(
+  id serial primary key not null,
+  shop_name varchar(100) not null,
+  shop_name_kana varchar(100) not null,
+  shop_detail text not null,
+  image_pass text not null,
+  deleted boolean default false not null
+);
+
+CREATE TABLE size(
+  id serial primary key not null,
+  size varchar(20) not null
+);
+
+CREATE TABLE color(
+  id serial primary key not null,
+  color varchar(100) not null
+);
+
+CREATE TABLE category(
+  id serial primary key not null,
+  category varchar(100) not null
+);
+
+CREATE TABLE items(
+  id serial primary key not null,
+  name varchar(100) not null,
+  price integer not null,
+  item_info text not null,
+  gender integer not null,
+  stock integer not null,
+  deleted boolean default false not null,
+  category_id bigint(20) unsigned not null,
+  color_id bigint(20) unsigned not null,
+  size_id bigint(20) unsigned not null,
+  shop_id bigint(20) unsigned not null,
+  FOREIGN KEY fk_category_id(category_id) REFERENCES category(id),
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
+  FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
+  FOREIGN KEY fk_shop_id(shop_id) REFERENCES shops(id)
+);
+
+CREATE TABLE images(
+  id serial primary key not null,
+  image_pass text not null,
+  item_id bigint(20) unsigned not null,
+  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id)
+);
+
+CREATE TABLE likes_item(
+  id serial primary key not null,
+  user_id bigint(20) unsigned not null,
+  item_id bigint(20) unsigned not null, 
+  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
+  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id)
+);
+
+CREATE TABLE likes_shop(
+  id serial primary key not null,
+  user_id bigint(20) unsigned not null,
+  shop_id bigint(20) unsigned not null, 
+  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
+  FOREIGN KEY fk_shop_id(shop_id) REFERENCES shops(id)
+);
+
+INSERT INTO shops(shop_name, shop_detail, image_pass, shop_name_kana) VALUES('吉田鞄', '世界中で話題のプロジェクトを手掛けるクリエイティブなデザインカンパニー、SPECIAL PRODUCT DESIGNが、誰かについ話したくなるような、ストーリーのあるアイテムをご紹介するショップです。', '吉田鞄ロゴ.jpg', 'ヨシダカバン');
+INSERT INTO shops(shop_name, shop_detail, image_pass, shop_name_kana) VALUES('コズミックチェイリー', '日本に2つとないブランド。あなたを虜にすること間違いなし。', 'コズミックチェイリー.jpg', 'コズミックチェイリー');
+INSERT INTO shops(shop_name, shop_detail, image_pass, shop_name_kana) VALUES('進む松永', '日本の最先端ブランド。進む松永。壊れにくく長く使用すると味が出てくることで多くの人を虜にしています。', '進む松永.jpg', 'ススムマツナガ');
+INSERT INTO shops(shop_name, shop_detail, image_pass, shop_name_kana) VALUES('バイシクルK', 'バイシクルQの兄弟ブランド。持っているだけでステータスに！', 'バイシクルKロゴ.jpg', 'バイシクルケー');
+
+INSERT INTO size(size) VALUES('SS');
+INSERT INTO size(size) VALUES('S');
+INSERT INTO size(size) VALUES('M');
+INSERT INTO size(size) VALUES('L');
+INSERT INTO size(size) VALUES('XL');
+
+INSERT INTO color(color) VALUES('ブラウン');
+INSERT INTO color(color) VALUES('ベージュ');
+INSERT INTO color(color) VALUES('グリーン');
+INSERT INTO color(color) VALUES('パープル');
+INSERT INTO color(color) VALUES('イエロー');
+INSERT INTO color(color) VALUES('ブルー');
+
+INSERT INTO category(category) VALUES('トップス');
+INSERT INTO category(category) VALUES('ジャケット/アウター');
+INSERT INTO category(category) VALUES('パンツ');
+INSERT INTO category(category) VALUES('シューズ');
+INSERT INTO category(category) VALUES('小物/財布');
+
+INSERT INTO items(name, price, item_info, gender, category_id, color_id, size_id, shop_id, stock) VALUES('リバーシブルスウェットニット', 4400, '一見スウェットにも見えますが実はニットで温かく、1枚で2色分着まわせるのがポイント◎', 2, 1, 2, 3, 5, 5);
+INSERT INTO items(name, price, item_info, gender, category_id, color_id, size_id, shop_id, stock) VALUES('レディース デニム スリム フレアレッグ ミッドブルー', 29700, 'フレアレッグ、ミッドウエスト、ストレッチ素材を使用した美シルエットデニムです。', 2, 3, 6, 4, 6, 5);
+
+INSERT INTO images(item_id, image_pass) VALUES(1, '服01.jpg');
