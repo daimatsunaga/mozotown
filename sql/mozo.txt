@@ -8,6 +8,11 @@ CREATE TABLE users(
   password text not null
 );
 
+CREATE TABLE category(
+  id serial primary key not null,
+  category varchar(100) not null
+);
+
 CREATE TABLE shops(
   id serial primary key not null,
   shop_name varchar(100) not null,
@@ -15,21 +20,6 @@ CREATE TABLE shops(
   shop_detail text not null,
   image_pass text not null,
   deleted boolean default false not null
-);
-
-CREATE TABLE size(
-  id serial primary key not null,
-  size varchar(20) not null
-);
-
-CREATE TABLE color(
-  id serial primary key not null,
-  color varchar(100) not null
-);
-
-CREATE TABLE category(
-  id serial primary key not null,
-  category varchar(100) not null
 );
 
 CREATE TABLE items(
@@ -41,13 +31,35 @@ CREATE TABLE items(
   stock integer not null,
   deleted boolean default false not null,
   category_id bigint(20) unsigned not null,
-  color_id bigint(20) unsigned not null,
-  size_id bigint(20) unsigned not null,
   shop_id bigint(20) unsigned not null,
   FOREIGN KEY fk_category_id(category_id) REFERENCES category(id),
-  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
-  FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
   FOREIGN KEY fk_shop_id(shop_id) REFERENCES shops(id)
+);
+
+CREATE TABLE size_items(
+  id serial primary key not null,
+  item_id bigint(20) unsigned not null,
+  size_id bigint(20) unsigned not null,
+  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
+  FOREIGN KEY fk_size_id(size_id) REFERENCES size(id)
+);
+
+CREATE TABLE size(
+  id serial primary key not null,
+  size varchar(20) not null
+);
+
+CREATE TABLE color_items(
+  id serial primary key not null,
+  item_id bigint(20) unsigned not null,
+  color_id bigint(20) unsigned not null,
+  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id)
+);
+
+CREATE TABLE color(
+  id serial primary key not null,
+  color varchar(100) not null
 );
 
 CREATE TABLE images(
@@ -97,7 +109,9 @@ INSERT INTO category(category) VALUES('パンツ');
 INSERT INTO category(category) VALUES('シューズ');
 INSERT INTO category(category) VALUES('小物/財布');
 
-INSERT INTO items(name, price, item_info, gender, category_id, color_id, size_id, shop_id, stock) VALUES('リバーシブルスウェットニット', 4400, '一見スウェットにも見えますが実はニットで温かく、1枚で2色分着まわせるのがポイント◎', 2, 1, 2, 3, 5, 5);
-INSERT INTO items(name, price, item_info, gender, category_id, color_id, size_id, shop_id, stock) VALUES('レディース デニム スリム フレアレッグ ミッドブルー', 29700, 'フレアレッグ、ミッドウエスト、ストレッチ素材を使用した美シルエットデニムです。', 2, 3, 6, 4, 6, 5);
+INSERT INTO items(name, price, item_info, gender, category_id, shop_id, stock) VALUES('リバーシブルスウェットニット', 4400, '一見スウェットにも見えますが実はニットで温かく、1枚で2色分着まわせるのがポイント◎', 2, 1, 1, 5);
+INSERT INTO items(name, price, item_info, gender, category_id, shop_id, stock) VALUES('レディース デニム スリム フレアレッグ ミッドブルー', 29700, 'フレアレッグ、ミッドウエスト、ストレッチ素材を使用した美シルエットデニムです。', 1, 1, 1, 5);
 
 INSERT INTO images(item_id, image_pass) VALUES(1, '服01.jpg');
+INSERT INTO images(item_id, image_pass) VALUES(1, '服02.jpg');
+INSERT INTO images(item_id, image_pass) VALUES(2, '服02.jpg');
