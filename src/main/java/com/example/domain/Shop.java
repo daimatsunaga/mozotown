@@ -7,7 +7,7 @@ public class Shop {
 	//ショップ名
 	private String shopName;
 	//ショップ名のふりがな
-	private String shopNameKane;
+	private String shopNameKana;
 	//ショップ詳細
 	private String shopDetail;
 	//イメージパス
@@ -28,11 +28,11 @@ public class Shop {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
-	public String getShopNameKane() {
-		return shopNameKane;
+	public String getShopNameKana() {
+		return shopNameKana;
 	}
-	public void setShopNameKane(String shopNameKane) {
-		this.shopNameKane = shopNameKane;
+	public void setShopNameKana(String shopNameKana) {
+		this.shopNameKana = shopNameKana;
 	}
 	public String getShopDetail() {
 		return shopDetail;
@@ -55,7 +55,7 @@ public class Shop {
 	//toStringのオーバーライド
 	@Override
 	public String toString() {
-		return "Shop [id=" + id + ", shopName=" + shopName + ", shopNameKane=" + shopNameKane + ", shopDetail="
+		return "Shop [id=" + id + ", shopName=" + shopName + ", shopNameKana=" + shopNameKana + ", shopDetail="
 				+ shopDetail + ", imagePass=" + imagePass + ", deleted=" + deleted + "]";
 	}
 }
