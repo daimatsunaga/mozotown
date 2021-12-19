@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.repository.ItemMapper">
+	
+	<resultMap type="com.example.domain.Image" id="image">
+		<id column="image_id" property="id"/>
+		<result column="image_pass" property="imagePass"/>
+		<result column="item_id" property="itemId"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Color" id="color">
+		<id column="color_id" property="id"/>
+		<result column="color" property="color"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Size" id="size">
+		<id column="size_id" property="id"/>
+		<result column="size" property="size"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Category" id="category">
+		<id column="category_id" property="id"/>
+		<result column="category" property="category"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Shop" id="shop">
+		<id column="shop_id" property="id"/>
+		<result column="shop_name" property="shopName"/>
+		<result column="shop_detail" property="shopDetail"/>
+		<result column="shop_image_pass" property="imagePass"/>
+		<result column="deleted" property="deleted"/>
+		<result column="shop_name_kana" property="shopNameKana"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Item" id="item">
+		<id column="item_id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+		<result column="item_info" property="itemInfo"/>
+		<result column="gender" property="gender"/>
+		<result column="category_id" property="categoryId"/>
+		<result column="shop_id" property="shopId"/>
+		<result column="stock" property="stock"/>
+		<result column="deleted" property="deleted"/>
+		<association property="category" resultMap="category"/>
+		<association property="shop" resultMap="shop"/>
+ 		<collection property="colorList" resultMap="color"/>
+ 		<collection property="sizeList" resultMap="size"/>
+ 		<collection property="imageList" resultMap="image"/>
+	</resultMap>
+		
+	<select id="findAll" resultMap="item">
+		select i.id as item_id, i.name, i.price, i.item_info, i.gender, i.stock, i.deleted,
+		s.id as shop_id, s.shop_name, s.shop_name_kana, s.shop_detail, s.image_pass as shop_image_pass, s.deleted,
+		ca.id as category_id, ca.category,
+  		co.id as color_id, co.color,
+  		size.id as size_id, size.size,
+  		im.id as image_id, im.image_pass, im.item_id
+		from items as i 
+		left join category as ca on i.category_id = ca.id 
+		left join shops as s on i.shop_id = s.id 
+ 		left join color_items as ci on i.id = ci.item_id 
+  		left join color as co on ci.color_id = co.id 
+  		left join size_items as si on i.id = si.item_id 
+  		left join size on si.size_id = size.id
+  		left join images as im on i.id = im.item_id;
+	</select>
+
+</mapper>

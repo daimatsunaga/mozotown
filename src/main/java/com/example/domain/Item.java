@@ -16,18 +16,23 @@ public class Item {
 	private Integer gender;
 	//カテゴリー（外部キー）
 	private Integer categoryId;
-	//カラー（外部キー）
-	private Integer colorId;
-	//サイズ（外部キー）
-	private Integer sizeId;
 	//取り扱いショップ（外部キー）
 	private Integer shopId;
 	//在庫数
 	private Integer stock;
 	//削除フラグ
 	private boolean deleted;
-	//画像
+	//結合用　画像
 	private List<Image> imageList;
+	//結合用　カラー
+	private List<Color> colorList;
+	//結合用　カテゴリー
+	private Category category;
+	//結合用　ショップ
+	private Shop shop;
+	//結合用　サイズ
+	private List<Size> sizeList;
+	
 	
 	//ゲッターセッター
 	public Integer getId() {
@@ -66,18 +71,6 @@ public class Item {
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
-	public Integer getColorId() {
-		return colorId;
-	}
-	public void setColorId(Integer colorId) {
-		this.colorId = colorId;
-	}
-	public Integer getSizeId() {
-		return sizeId;
-	}
-	public void setSizeId(Integer sizeId) {
-		this.sizeId = sizeId;
-	}
 	public Integer getShopId() {
 		return shopId;
 	}
@@ -102,12 +95,35 @@ public class Item {
 	public void setImageList(List<Image> imageList) {
 		this.imageList = imageList;
 	}
-	
-	//toStringのオーバーライド
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public Shop getShop() {
+		return shop;
+	}
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+	public List<Color> getColorList() {
+		return colorList;
+	}
+	public void setColorList(List<Color> colorList) {
+		this.colorList = colorList;
+	}
+	public List<Size> getSizeList() {
+		return sizeList;
+	}
+	public void setSizeList(List<Size> sizeList) {
+		this.sizeList = sizeList;
+	}
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", itemInfo=" + itemInfo + ", gender="
-				+ gender + ", categoryId=" + categoryId + ", colorId=" + colorId + ", sizeId=" + sizeId + ", shopId="
-				+ shopId + ", stock=" + stock + ", deleted=" + deleted + ", imageList=" + imageList + "]";
+				+ gender + ", categoryId=" + categoryId + ", shopId="
+				+ shopId + ", stock=" + stock + ", deleted=" + deleted + ", imageList=" + imageList + ", colorList="
+				+ colorList + ", category=" + category + ", shop=" + shop + ", sizeList=" + sizeList + "]";
 	}
 }
