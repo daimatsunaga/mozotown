@@ -67,9 +67,11 @@
 						<div class="col mb-5" th:each="item: ${itemList}">
 							<div class="card h-100">
 								<!-- Product image-->
-								<img class="card-img-top" style="height: 230px"
-									th:src="@{/img/} + ${item.imageList[0].imagePass}"
-									alt="..." />
+								<a th:href="@{/item/detail?id=} + ${item.id}">
+									<img class="card-img-top" style="height: 230px"
+										th:src="@{/img/} + ${item.imageList[0].imagePass}"
+										alt="..." />
+								</a>
 								<!-- Product details-->
 								<div class="card-body p-4">
 									<div class="text-start">

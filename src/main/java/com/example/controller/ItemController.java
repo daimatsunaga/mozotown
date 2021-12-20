@@ -25,4 +25,12 @@ public class ItemController {
 		model.addAttribute("itemList", itemList);
 		return "top_page";
 	}
+	
+	@GetMapping("/detail")
+	public String itemDetail(Integer id, Model model) {
+		Item item = service.findById(id);
+		System.out.println(service.findById(1));
+		model.addAttribute("item", item);
+		return "item_detail";
+	}
 }

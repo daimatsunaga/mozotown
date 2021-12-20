@@ -17,4 +17,8 @@ public class ItemService {
 	public List<Item> findAll() {
 		return mapper.findAll();
 	}
+	
+	public Item findById(Integer id) {
+		return mapper.findById(id);
+	}
 }
