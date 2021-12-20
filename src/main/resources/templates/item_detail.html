@@ -22,7 +22,7 @@
     <ol class="container mb-5">
       <div class="row">
         <li class="breadcrumb-item"><a href="./toppage.html">MOZOTOWN</a></li>
-        <li class="breadcrumb-item"><a href="./toppage.html" th:text="${item.shop.shopName}">ショップ名</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/shop/detail?id=} + ${item.shop.id}" th:text="${item.shop.shopName}">ショップ名</a></li>
         <li class="breadcrumb-item"><a href="./toppage.html" th:text="${item.category.category}">ジャンル名</a></li>
         <li class="breadcrumb-item active" aria-current="page">アイテム詳細</li>
       </div>
@@ -50,7 +50,7 @@
         <div class="col-6 pl-5">
           <div class="mb-4" style="color: #17a2b8;">
           	<label class="fas fa-store-alt"></label>
-            <a href="#" th:text="${item.shop.shopName}" style="color: #17a2b8;">ブランド名</a>
+            <a th:href="@{/shop/detail?id=} + ${item.shop.id}" th:text="${item.shop.shopName}" style="color: #17a2b8;">ブランド名</a>
           </div>
 
           <div class="mb-4" style="font-size: 18px;">

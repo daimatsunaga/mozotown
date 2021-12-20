@@ -20,6 +20,7 @@ public class ShopController {
 	@GetMapping("/detail")
 	public String shopDetail(Integer id, Model model) {
 		Shop shop = service.findShop(id);
+		System.out.println(shop);
 		model.addAttribute("shop", shop);
 		return "shop_detail";
 	}

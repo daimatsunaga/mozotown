@@ -12,13 +12,13 @@
 
 </head>
 <body>
-	<span th:insert="fragment_header::frag_header"></span>s
+	<span th:insert="fragment_header::frag_header"></span>
 
 	<!-- パンくずリスト -->
-	<ol class="container">
+	<ol class="container mt-4">
 		<div class="row">
 			<li class="breadcrumb-item"><a href="./toppage.html">MOZOTOWN</a></li>
-			<li class="breadcrumb-item active" aria-current="page">進む松永</li>
+			<li class="breadcrumb-item active" aria-current="page" th:text="${shop.shopName}">進む松永</li>
 		</div>
 	</ol>
 
@@ -26,17 +26,17 @@
 		<div class="container row">
 			<div class="col-4">
 				<img style="width: 300px; height: 300px; border-radius: 25px;"
-					src="/img/進む松永ロゴ.jpg" alt="画像">
+					th:src="@{/img/} + ${shop.imagePass}">
 			</div>
 
 			<div class="col-7 ml-5 p-3">
-				<h2 class="my-3">進む松永</h2>
-				<p>ススムマツナガ</p>
+				<h2 class="my-3" th:text="${shop.shopName}">進む松永</h2>
+				<p th:text="${shop.shopNameKana}">ススムマツナガ</p>
 				<form>
 					<button type="button" class="btn btn-outline-success px-4"
 						style="border-radius: 25px;">♡お気に入りショップに追加</button>
 				</form>
-				<p class="mt-5">
+				<p class="mt-5" th:text="${shop.shopDetail}">
 					日本の最先端ブランド。進む松永。壊れにくく長く使用すると味が出てくることで多くの人を虜にしています。</p>
 			</div>
 		</div>
