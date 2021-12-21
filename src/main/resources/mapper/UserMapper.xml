@@ -4,7 +4,7 @@
         
 <mapper namespace="com.example.repository.UserMapper">
 	
-<!-- 	<resultMap type="com.example.domain.User" id="user">
+ 	<resultMap type="com.example.domain.User" id="user">
 		<id column="id" property="id"/>
 		<result column="gender" property="gender"/>
 		<result column="birthday" property="birthday"/>
@@ -12,7 +12,7 @@
 		<result column="zip_code" property="zipCode"/>
 		<result column="address" property="address"/>
 		<result column="password" property="password"/>  
-	</resultMap> -->
+	</resultMap>
 	
 	<insert id="insert">
 	   insert into users(gender, birthday, email, zip_code, address, password) 
@@ -23,7 +23,15 @@
 		select * from users where email = #{email}
 	</select>
 	
+	<select id="findById" resultType="com.example.domain.User">
+		select * from users where id = #{id}
+	</select>
+	
 	<delete id="deleteById">
 		delete from users where id = #{id}
 	</delete>
+	
+	<update id="updateUser">
+		update users set birthday = #{birthday}, zip_code = #{zipCode}, address = #{address} where id = #{id};
+	</update>
 </mapper>

@@ -2,6 +2,8 @@ package com.example.form;
 
 public class UserInsertForm {
 
+	//id
+	private Integer id;
 	//性別
 	private Integer gender;
 	//生年月日　//年
@@ -76,12 +78,19 @@ public class UserInsertForm {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	//toStringのオーバーライド
 	@Override
 	public String toString() {
-		return "UserInsert [gender=" + gender + ", year=" + year + ", month=" + month + ", day=" + day + ", email="
-				+ email + ", zipCode=" + zipCode + ", address=" + address + ", password=" + password
+		return "UserInsertForm [id=" + id + ", gender=" + gender + ", year=" + year + ", month=" + month + ", day="
+				+ day + ", email=" + email + ", zipCode=" + zipCode + ", address=" + address + ", password=" + password
 				+ ", confirmPassword=" + confirmPassword + "]";
 	}
+	
+
 }

@@ -148,4 +148,19 @@ public class UserController {
 	public String toChangePassword() {
 		return "change_user_password";
 	}
+	
+	@PostMapping("/update")
+	public String userUpdate(UserInsertForm form) {
+		User user = new User();
+		BeanUtils.copyProperties(form, user);
+		
+		//フォームから送られてきた年月日をDate型に変換しuserにセット
+		String date = form.getYear() + "-" + form.getMonth() + "-" + form.getDay();
+		Date birthday = Date.valueOf(date);
+		user.setBirthday(birthday);
+		
+		service.update(user);
+		
+		return "redirect:/user/detail";
+	}
   }

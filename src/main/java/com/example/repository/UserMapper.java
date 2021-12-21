@@ -12,6 +12,12 @@ public interface UserMapper {
 	//ユーザー取得（１件）
 	public User findByEmail(String email);
 	
+	//ユーザー取得（１件）
+	public User findById(Integer id);
+	
 	//ユーザー削除
 	public void deleteById(Integer id);
+	
+	//ユーザー更新
+	public void updateUser(User user);
 }
