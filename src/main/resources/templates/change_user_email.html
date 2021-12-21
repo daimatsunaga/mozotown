@@ -54,7 +54,7 @@
           <p>登録したいメールアドレスを入力し、確認メールを送信してください。</p>
         </div>
         <div class="row d-flex justify-content-center">
-          <form class="col-md-8" method="post" action="item_list_pizza.html" style="background-color: #f0f0f0;">
+          <form class="col-md-8" method="post" th:action="@{/user/updateEmail}" style="background-color: #f0f0f0;">
             <fieldset>
               <div class="form-group">
                 <label for="inputZipcode">メールアドレス:</label>
@@ -65,6 +65,7 @@
                   >メールアドレスを入力してください</label
                 >
                 <input
+                  name="email"
                   type="text"
                   id="inputZipcode"
                   class="form-control"
@@ -73,6 +74,7 @@
               </div>
     
               <div class="form-group d-flex justify-content-center">
+              	<input type="hidden" name=id th:value="${session.user.id}">
                 <button type="submit" class="btn btn-primary">確認メールを送信する</button>
               </div>
             </fieldset>

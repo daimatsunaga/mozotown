@@ -51,7 +51,7 @@
       <div class="col-md-10 p-5" style="background-color: #f0f0f0;">
         <div class="mb-4" style="font-size: 20px;">基本情報の変更</div>
         <div class="row d-flex justify-content-center">
-          <form class="col-md-8" method="post" th:action="@{/user/update}" style="background-color: #f0f0f0;">
+          <form class="col-md-8" method="post" th:action="@{/user/updateInfo}" style="background-color: #f0f0f0;">
             <fieldset>
               <div class="form-group">
                 <label for="male">性別:</label>
@@ -157,7 +157,7 @@
               </div>
     
               <div class="form-group d-flex justify-content-center">
-              <input type="hidden" name=id th:value="${session.user.id}">
+            	<input type="hidden" name=id th:value="${session.user.id}">
                 <button type="submit" class="btn btn-primary">基本情報を変更する</button>
               </div>
             </fieldset>

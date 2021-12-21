@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
+import com.example.form.UserEmailUpdateForm;
 import com.example.form.UserInfoUpdateForm;
 import com.example.form.UserInsertForm;
 import com.example.form.UserLoginForm;
@@ -44,6 +45,11 @@ public class UserController {
 	@ModelAttribute
 	public UserInfoUpdateForm setUpInfoUpdateForm() {
 		return new UserInfoUpdateForm();
+	}
+	
+	@ModelAttribute
+	public UserEmailUpdateForm setUpEmailUpdateForm() {
+		return new UserEmailUpdateForm();
 	}
 	
 	@GetMapping("/toInsert")
@@ -155,7 +161,7 @@ public class UserController {
 		return "change_user_password";
 	}
 	
-	@PostMapping("/update")
+	@PostMapping("/updateInfo")
 	public String userUpdate(UserInfoUpdateForm form) {
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
@@ -165,8 +171,14 @@ public class UserController {
 		Date birthday = Date.valueOf(date);
 		user.setBirthday(birthday);
 		
-		service.update(user);
+		service.updateInfo(user);
 		
+		return "redirect:/user/detail";
+	}
+	
+	@PostMapping("/updateEmail")
+	public String userUpdateEmail(UserEmailUpdateForm form) {
+		service.updateEmail(form.getEmail(), form.getId());
 		return "redirect:/user/detail";
 	}
   }

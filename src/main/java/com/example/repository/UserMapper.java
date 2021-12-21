@@ -1,6 +1,8 @@
 package com.example.repository;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
 import com.example.domain.User;
 
 @Mapper
@@ -18,6 +20,9 @@ public interface UserMapper {
 	//ユーザー削除
 	public void deleteById(Integer id);
 	
-	//ユーザー更新
-	public void updateUser(User user);
+	//ユーザー更新（基本情報）
+	public void updateUserInfo(User user);
+	
+	//ユーザー更新(メールアドレス)
+	public void updateUserEmail(@Param("email")String email, @Param("id")Integer id);
 }
