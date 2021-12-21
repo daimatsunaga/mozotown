@@ -15,7 +15,7 @@
 
     <!-- お店の名前 -->
     <div class="container mb-4">
-      <a th:text="${item.shop.shopName}" class="navbar-brand" href="./toppage.html" style="font-size: 30px; color: black;">進む松永</a>
+      <a th:text="${item.shop.shopName}" class="navbar-brand" th:href="@{/shop/detail?id=} + ${item.shop.id}" style="font-size: 30px; color: black;">進む松永</a>
     </div>
 
     <!-- パンくずリスト -->
@@ -121,6 +121,13 @@
         </div>
       </div>
     </div>
+    	<!-- Footer-->
+	<footer class="py-5" style="background-color: #f0f0f0">
+		<div class="container">
+			<p class="m-0 text-center" style="color: #808080; font-size: 10px">
+				Copyright &copy; Dai Matsunaga Website 2021</p>
+		</div>
+	</footer>
   
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
