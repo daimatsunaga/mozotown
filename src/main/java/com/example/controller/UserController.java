@@ -1,12 +1,15 @@
 package com.example.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +41,22 @@ public class UserController {
 	}
 	
 	@GetMapping("/toInsert")
-	public String toInsert() {
+	public String toInsert(Model model) {
+		List<Integer> year = new ArrayList<>();
+		List<Integer> month = new ArrayList<>();
+		List<Integer> day = new ArrayList<>();
+		for(int i = 1920; i <= 2021; i++) {
+			year.add(i);
+		}
+		for(int i = 1; i <= 12; i++) {
+			month.add(i);
+		}
+		for(int i = 1; i <= 31; i++) {
+			day.add(i);
+		}
+		model.addAttribute("years", year);
+		model.addAttribute("months", month);
+		model.addAttribute("days", day);
 		return "register_user";
 	}
 	
@@ -97,5 +115,37 @@ public class UserController {
 		service.deleteById(id);
 		session.invalidate();
 		return "redirect:/item";
+	}
+	
+	@GetMapping("/toChangeInfo")
+	public String toChangeInfo(Model model) {
+		List<Integer> year = new ArrayList<>();
+		List<Integer> month = new ArrayList<>();
+		List<Integer> day = new ArrayList<>();
+		for(int i = 1920; i <= 2021; i++) {
+			year.add(i);
+		}
+		for(int i = 1; i <= 12; i++) {
+			month.add(i);
+		}
+		for(int i = 1; i <= 31; i++) {
+			day.add(i);
+		}
+		model.addAttribute("years", year);
+		model.addAttribute("months", month);
+		model.addAttribute("days", day);
+		
+		
+		return "change_user_info";
+	}
+	
+	@GetMapping("/toChangeEmail")
+	public String toChangeEmail() {
+		return "change_user_email";
+	}
+	
+	@GetMapping("/toChangePassword")
+	public String toChangePassword() {
+		return "change_user_password";
 	}
   }
