@@ -15,7 +15,7 @@
 	<span th:insert="fragment_header::frag_header"></span>
 
 	<!-- パンくずリスト -->
-	<ol class="container">
+	<ol class="container mt-4">
 		<div class="row">
 			<li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
 			<li class="breadcrumb-item active" aria-current="page">登録情報</li>
@@ -25,7 +25,7 @@
 	<div class="container mb-4">
 		<div class="row">
 			<img style="width: 50px;" th:src="@{/img/新規登録.png}" alt="新規登録アイコン">
-			<h1 th:text="${session.userName} + 様" class="align-self-end"
+			<h1 th:text="${session.userName} + 様の登録情報" class="align-self-end"
 				style="font-size: 24px;">〇〇様の登録情報</h1>
 		</div>
 	</div>
