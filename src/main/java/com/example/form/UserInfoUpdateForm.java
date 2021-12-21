@@ -1,7 +1,9 @@
 package com.example.form;
 
-public class UserInsertForm {
+public class UserInfoUpdateForm {
 
+	//id
+	private Integer id;
 	//性別
 	private Integer gender;
 	//生年月日　//年
@@ -10,16 +12,10 @@ public class UserInsertForm {
 	private String month;
 	//生年月日　//日
 	private String day;
-	//メールアドレス
-	private String email;
 	//郵便番号
 	private String zipCode;
 	//住所
 	private String address;
-	//パスワード
-	private String password;
-	//確認用パスワード
-	private String confirmPassword;
 	
 	//ゲッターセッター
 	public Integer getGender() {
@@ -46,12 +42,6 @@ public class UserInsertForm {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getZipCode() {
 		return zipCode;
 	}
@@ -64,25 +54,16 @@ public class UserInsertForm {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getPassword() {
-		return password;
+	public Integer getId() {
+		return id;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	//toStringのオーバーライド
 	@Override
 	public String toString() {
-		return "UserInsertForm [gender=" + gender + ", year=" + year + ", month=" + month + ", day="
-				+ day + ", email=" + email + ", zipCode=" + zipCode + ", address=" + address + ", password=" + password
-				+ ", confirmPassword=" + confirmPassword + "]";
+		return "UserInfoUpdateForm [id=" + id + ", gender=" + gender + ", year=" + year + ", month=" + month + ", day="
+				+ day + ", zipCode=" + zipCode + ", address=" + address + "]";
 	}
-	
-
 }

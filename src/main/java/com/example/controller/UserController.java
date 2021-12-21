@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
+import com.example.form.UserInfoUpdateForm;
 import com.example.form.UserInsertForm;
 import com.example.form.UserLoginForm;
 import com.example.service.UserService;
@@ -38,6 +39,11 @@ public class UserController {
 	@ModelAttribute
 	public UserLoginForm setUpLoginForm() {
 		return new UserLoginForm();
+	}
+	
+	@ModelAttribute
+	public UserInfoUpdateForm setUpInfoUpdateForm() {
+		return new UserInfoUpdateForm();
 	}
 	
 	@GetMapping("/toInsert")
@@ -150,7 +156,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/update")
-	public String userUpdate(UserInsertForm form) {
+	public String userUpdate(UserInfoUpdateForm form) {
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 		
