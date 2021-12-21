@@ -2,27 +2,38 @@ package com.example.form;
 
 public class UserPasswordUpdateForm {
 
-	//パスワード
-	private String password;
-	//確認用パスワード
-	private String confirmPassword;
+	//id
+	private Integer id;
+	//新しいパスワード
+	private String newPassword;
+	//古いパスワード
+	private String currentPassword;
 	
 	//ゲッターセッター
-	public String getPassword() {
-		return password;
+	public String getCurrentPassword() {
+		return currentPassword;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCurrentPassword(String currentPassword) {
+		this.currentPassword = currentPassword;
 	}
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public String getNewPassword() {
+		return newPassword;
 	}
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	//toStringのオーバーライド
 	@Override
 	public String toString() {
-		return "UserPasswordUpdateForm [password=" + password + ", confirmPassword=" + confirmPassword + "]";
+		return "UserPasswordUpdateForm [id=" + id + ", newPassword=" + newPassword + ", currentPassword="
+				+ currentPassword + "]";
 	}
+	
 }

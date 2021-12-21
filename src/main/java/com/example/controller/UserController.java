@@ -20,6 +20,7 @@ import com.example.form.UserEmailUpdateForm;
 import com.example.form.UserInfoUpdateForm;
 import com.example.form.UserInsertForm;
 import com.example.form.UserLoginForm;
+import com.example.form.UserPasswordUpdateForm;
 import com.example.service.UserService;
 
 @Controller
@@ -50,6 +51,11 @@ public class UserController {
 	@ModelAttribute
 	public UserEmailUpdateForm setUpEmailUpdateForm() {
 		return new UserEmailUpdateForm();
+	}
+	
+	@ModelAttribute
+	public UserPasswordUpdateForm setUpPasswordUpdateForm() {
+		return new UserPasswordUpdateForm();
 	}
 	
 	@GetMapping("/toInsert")
@@ -172,13 +178,18 @@ public class UserController {
 		user.setBirthday(birthday);
 		
 		service.updateInfo(user);
-		
 		return "redirect:/user/detail";
 	}
 	
 	@PostMapping("/updateEmail")
 	public String userUpdateEmail(UserEmailUpdateForm form) {
 		service.updateEmail(form.getEmail(), form.getId());
+		return "redirect:/user/detail";
+	}
+	
+	@PostMapping("/updatePassword")
+	public String userUpdatePassword(UserPasswordUpdateForm form, Model model) {
+		service.updatePassword(form.getNewPassword(), form.getId());
 		return "redirect:/user/detail";
 	}
   }

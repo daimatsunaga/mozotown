@@ -44,4 +44,9 @@ public class UserService {
 		session.setAttribute("userName", userName);
 		session.setAttribute("user", user);
 	}
+	
+	public void updatePassword(String newPassword, Integer id) {
+		mapper.updateUserPassword(newPassword, id);
+		session.setAttribute("user", mapper.findById(id));
+	}
 }

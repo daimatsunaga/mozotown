@@ -25,4 +25,7 @@ public interface UserMapper {
 	
 	//ユーザー更新(メールアドレス)
 	public void updateUserEmail(@Param("email")String email, @Param("id")Integer id);
+	
+	//ユーザー更新(パスワード)
+	public void updateUserPassword(@Param("newPassword")String newPassword, @Param("id")Integer id);
 }
