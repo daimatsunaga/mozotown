@@ -189,6 +189,12 @@ public class UserController {
 	
 	@PostMapping("/updatePassword")
 	public String userUpdatePassword(UserPasswordUpdateForm form, Model model) {
+		User user = (User) session.getAttribute("user");
+		if(!user.getEmail().equals(form.getCurrentPassword())) {
+			model.addAttribute("error", "現在のパスワードが正しくありません");
+			return "change_user_password";
+		}
+		
 		service.updatePassword(form.getNewPassword(), form.getId());
 		return "redirect:/user/detail";
 	}
