@@ -18,8 +18,6 @@ public class Item {
 	private Integer categoryId;
 	//取り扱いショップ（外部キー）
 	private Integer shopId;
-	//在庫数
-	private Integer stock;
 	//削除フラグ
 	private boolean deleted;
 	//結合用　画像
@@ -77,12 +75,6 @@ public class Item {
 	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
-	public Integer getStock() {
-		return stock;
-	}
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
 	public boolean isDeleted() {
 		return deleted;
 	}
@@ -123,7 +115,7 @@ public class Item {
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", itemInfo=" + itemInfo + ", gender="
 				+ gender + ", categoryId=" + categoryId + ", shopId="
-				+ shopId + ", stock=" + stock + ", deleted=" + deleted + ", imageList=" + imageList + ", colorList="
+				+ shopId + ", deleted=" + deleted + ", imageList=" + imageList + ", colorList="
 				+ colorList + ", category=" + category + ", shop=" + shop + ", sizeList=" + sizeList + "]";
 	}
 }
