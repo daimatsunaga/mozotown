@@ -77,7 +77,7 @@
   		co.id as color_id, co.color,
   		st.size_id as size_id, si.size,
   		st.color_id as color_id, co.color,
-  		st.id as stock_id,
+  		st.stock,
   		im.id as image_id, im.image_pass, im.item_id
 		from items as i 
 		left join category as ca on i.category_id = ca.id 

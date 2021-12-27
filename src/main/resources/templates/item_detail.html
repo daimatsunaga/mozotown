@@ -21,7 +21,7 @@
     <!-- パンくずリスト -->
     <ol class="container mb-5">
       <div class="row">
-        <li class="breadcrumb-item"><a href="./toppage.html">MOZOTOWN</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
         <li class="breadcrumb-item"><a th:href="@{/shop/detail?id=} + ${item.shop.id}" th:text="${item.shop.shopName}">ショップ名</a></li>
         <li class="breadcrumb-item"><a href="./toppage.html" th:text="${item.category.category}">ジャンル名</a></li>
         <li class="breadcrumb-item active" aria-current="page">アイテム詳細</li>
@@ -54,7 +54,7 @@
           </div>
 
           <div class="mb-4" style="font-size: 18px;">
-            <b th:text="${item.name}" >【2021A/W New Arrival】ライトニットメルトン キャンディスリーブロングトレンチコート（裏地付き）</b>
+            <b th:text="${item.name}" >商品名</b>
           </div>
 
           <div class="mb-4" style="font-size: 25px;">
@@ -69,33 +69,17 @@
           <div class="mb-4">
             <table class="table">
               <tbody style="color: #808080;">
-                <tr>
+                <tr th:each="stock : ${item.stockList}">
                   <td style="vertical-align: middle;">
-                    <div>ブラック</div>
+                    <div th:text="${stock.color}">ブラック</div>
                   </td>
                   <td class="" style="vertical-align: middle;">
-                    <span>S</span>&nbsp;/
-                    <span>在庫あり</span>
+                    <span th:text="${stock.size}">S</span>&nbsp;/
+                    <span th:if="${stock.stock <= 3}" th:text="残り + ${stock.stock} + 点">残り3点</span>
+                    <span th:unless="${stock.stock <= 3}">在庫あり</span>
                   </td>
                   <td style="vertical-align: middle;">
                     <form action="#" method="POST">
-                      <button class="btn btn-outline-info"><i class="fas fa-shopping-cart"></i>カートに入れる</button>
-                    </form>
-                  </td>
-                  <td style="vertical-align: middle; font-size: 20px;"> 
-                    <i class="fas fa-heart"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="vertical-align: middle;">
-                    <div>ホワイト</div>
-                  </td>
-                  <td class="" style="vertical-align: middle;">
-                    <span>S</span>&nbsp;/
-                    <span>在庫あり</span>
-                  </td>
-                  <td style="vertical-align: middle;"> 
-                    <form action="#" method="post">
                       <button class="btn btn-outline-info"><i class="fas fa-shopping-cart"></i>カートに入れる</button>
                     </form>
                   </td>
