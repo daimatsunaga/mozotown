@@ -12,5 +12,7 @@ public interface ItemMapper {
 	public List<Item> findAll();
 	
 	public Item findById(Integer id);
+	
+	public List<Item> findByShopId(Integer shopId);
 
 }

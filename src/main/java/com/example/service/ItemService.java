@@ -21,4 +21,8 @@ public class ItemService {
 	public Item findById(Integer id) {
 		return mapper.findById(id);
 	}
+	
+	public List<Item> findByShopId(Integer id) {
+		return mapper.findByShopId(id);
+	}
 }

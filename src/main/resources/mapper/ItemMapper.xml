@@ -88,5 +88,24 @@
   		left join images as im on i.id = im.item_id
   		where i.id = #{id};
 	</select>
+	
+	<select id="findByShopId" resultMap="item">
+		select i.id as item_id, i.name, i.price, i.item_info, i.gender, i.deleted,
+		sh.id as shop_id, sh.shop_name, sh.shop_name_kana, sh.shop_detail, sh.image_pass as shop_image_pass, sh.deleted,
+		ca.id as category_id, ca.category,
+  		co.id as color_id, co.color,
+  		st.size_id as size_id, si.size,
+  		st.color_id as color_id, co.color,
+  		st.stock,
+  		im.id as image_id, im.image_pass, im.item_id
+		from items as i 
+		left join category as ca on i.category_id = ca.id 
+		left join shops as sh on i.shop_id = sh.id 
+ 		left join stock as st on i.id = st.item_id 
+  		left join color as co on st.color_id = co.id 
+  		left join size as si on st.size_id = si.id
+  		left join images as im on i.id = im.item_id
+  		where sh.id = #{ShopId};
+	</select>
 
 </mapper>

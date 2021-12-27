@@ -17,7 +17,7 @@
 	<!-- パンくずリスト -->
 	<ol class="container mt-4">
 		<div class="row">
-			<li class="breadcrumb-item"><a href="./toppage.html">MOZOTOWN</a></li>
+			<li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
 			<li class="breadcrumb-item active" aria-current="page" th:text="${shop.shopName}">進む松永</li>
 		</div>
 	</ol>
@@ -45,312 +45,100 @@
 
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item"><a class="nav-link active" id="home-tab"
-				data-toggle="tab" href="#home" role="tab" aria-controls="home"
+				data-toggle="tab" href="#all" role="tab" aria-controls="home"
 				aria-selected="true">全て</a></li>
 			<li class="nav-item"><a class="nav-link" id="profile-tab"
-				data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+				data-toggle="tab" href="#male" role="tab" aria-controls="profile"
 				aria-selected="false">メンズ</a></li>
 			<li class="nav-item"><a class="nav-link" id="contact-tab"
-				data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+				data-toggle="tab" href="#female" role="tab" aria-controls="contact"
 				aria-selected="false">レディース</a></li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="home" role="tabpanel"
-				aria-labelledby="home-tab">すべて</div>
-			<div class="tab-pane fade" id="profile" role="tabpanel"
-				aria-labelledby="profile-tab">メンズ</div>
-			<div class="tab-pane fade" id="contact" role="tabpanel"
-				aria-labelledby="contact-tab">レディース</div>
-		</div>
-	</div>
-	<!-- この下は使わないかも -->
-	<div class="container d-flex">
-		<div class="container row">
-			<section class="col">
-				<div class="container px-4 px-lg-5 mt-5">
-					<div
-						class="
-            row
-            gx-4 gx-lg-5
-            row-cols-2 row-cols-md-3 row-cols-xl-4
-            justify-content-center
-          ">
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+			<div class="container px-4 px-lg-5 mt-5 tab-pane fade show active" id="all" role="tabpanel"
+				aria-labelledby="home-tab">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:each="item: ${itemList}">
+						<div class="card h-100">
+							<!-- Product image-->
+							<a th:href="@{/item/detail?id=} + ${item.id}">
+								<img class="card-img-top" style="height: 230px"
+									th:src="@{/img/} + ${item.imageList[0].imagePass}"
 									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Fancy Product</h5>
-										<!-- Product price-->
-										$40.00 - $80.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">View
-											options</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Sale badge-->
-								<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">Sale</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Special Item</h5>
-										<!-- Product reviews-->
-										<div
-											class="
-                      d-flex
-                      justify-content-center
-                      small
-                      text-warning
-                      mb-2
-                    ">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">$20.00</span>
-										$18.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">Add
-											to cart</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Sale badge-->
-								<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">Sale</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Sale Item</h5>
-										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">$50.00</span>
-										$25.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">Add
-											to cart</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Popular Item</h5>
-										<!-- Product reviews-->
-										<div
-											class="
-                      d-flex
-                      justify-content-center
-                      small
-                      text-warning
-                      mb-2
-                    ">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										$40.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">Add
-											to cart</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Sale badge-->
-								<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">Sale</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Sale Item</h5>
-										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">$50.00</span>
-										$25.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">Add
-											to cart</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Fancy Product</h5>
-										<!-- Product price-->
-										$120.00 - $280.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">View
-											options</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Sale badge-->
-								<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">Sale</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Special Item</h5>
-										<!-- Product reviews-->
-										<div
-											class="
-                      d-flex
-                      justify-content-center
-                      small
-                      text-warning
-                      mb-2
-                    ">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">$20.00</span>
-										$18.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">Add
-											to cart</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">Popular Item</h5>
-										<!-- Product reviews-->
-										<div
-											class="
-                      d-flex
-                      justify-content-center
-                      small
-                      text-warning
-                      mb-2
-                    ">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										$40.00
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">Add
-											to cart</a>
-									</div>
+							</a>
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-start">
+									<!-- Product name-->
+									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
+									<!-- Product category-->
+									<h5 class="fw-bolder" th:text="${item.category.category}" style="color: #808080; font-size: 12px;">Fancy Product</h5>
+									<!-- Product price-->
+									<h6 class="fw-bolder" th:text="￥ + ${#numbers.formatInteger(item.price, 1, 'COMMA')}" style="font-size: 20px">￥4,300</h6>
+									<!-- Product colors-->
+									<div class="fw-bolder" th:text="全 + ${item.colorList.size} + 色" style="color: #808080; font-size: 10px">全３色</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+			<div class="container px-4 px-lg-5 mt-5 tab-pane fade" id="male" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:if="${item.gender == 1}" th:each="item: ${itemList}">
+						<div class="card h-100">
+							<!-- Product image-->
+							<a th:href="@{/item/detail?id=} + ${item.id}">
+								<img class="card-img-top" style="height: 230px"
+									th:src="@{/img/} + ${item.imageList[0].imagePass}"
+									alt="..." />
+							</a>
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-start">
+									<!-- Product name-->
+									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
+									<!-- Product category-->
+									<h5 class="fw-bolder" th:text="${item.category.category}" style="color: #808080; font-size: 12px;">Fancy Product</h5>
+									<!-- Product price-->
+									<h6 class="fw-bolder" th:text="￥ + ${#numbers.formatInteger(item.price, 1, 'COMMA')}" style="font-size: 20px">￥4,300</h6>
+									<!-- Product colors-->
+									<div class="fw-bolder" th:text="全 + ${item.colorList.size} + 色" style="color: #808080; font-size: 10px">全３色</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container px-4 px-lg-5 mt-5  tab-pane fade" id="female" role="tabpanel" aria-labelledby="contact-tab">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:if="${item.gender == 2}" th:each="item: ${itemList}">
+						<div class="card h-100">
+							<!-- Product image-->
+							<a th:href="@{/item/detail?id=} + ${item.id}">
+								<img class="card-img-top" style="height: 230px"
+									th:src="@{/img/} + ${item.imageList[0].imagePass}"
+									alt="..." />
+							</a>
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-start">
+									<!-- Product name-->
+									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
+									<!-- Product category-->
+									<h5 class="fw-bolder" th:text="${item.category.category}" style="color: #808080; font-size: 12px;">Fancy Product</h5>
+									<!-- Product price-->
+									<h6 class="fw-bolder" th:text="￥ + ${#numbers.formatInteger(item.price, 1, 'COMMA')}" style="font-size: 20px">￥4,300</h6>
+									<!-- Product colors-->
+									<div class="fw-bolder" th:text="全 + ${item.colorList.size} + 色" style="color: #808080; font-size: 10px">全３色</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-
-
 
 	<!-- Footer-->
 	<footer class="py-5" style="background-color: #f0f0f0;">

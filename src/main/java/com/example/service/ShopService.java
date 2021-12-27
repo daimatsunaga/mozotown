@@ -9,7 +9,8 @@ import com.example.repository.ShopMapper;
 @Service
 public class ShopService {
 
-	@Autowired ShopMapper mapper;
+	@Autowired 
+	private ShopMapper mapper;
 	
 	public Shop findShop(Integer id) {
 		return mapper.findShop(id);
