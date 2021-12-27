@@ -28,9 +28,8 @@ public class Item {
 	private Category category;
 	//結合用　ショップ
 	private Shop shop;
-	//結合用　サイズ
-	private List<Size> sizeList;
-	
+	//結合用　在庫
+	private List<Stock> stockList;
 	
 	//ゲッターセッター
 	public Integer getId() {
@@ -105,17 +104,19 @@ public class Item {
 	public void setColorList(List<Color> colorList) {
 		this.colorList = colorList;
 	}
-	public List<Size> getSizeList() {
-		return sizeList;
+	public List<Stock> getStockList() {
+		return stockList;
 	}
-	public void setSizeList(List<Size> sizeList) {
-		this.sizeList = sizeList;
+	public void setStockList(List<Stock> stockList) {
+		this.stockList = stockList;
 	}
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", itemInfo=" + itemInfo + ", gender="
-				+ gender + ", categoryId=" + categoryId + ", shopId="
-				+ shopId + ", deleted=" + deleted + ", imageList=" + imageList + ", colorList="
-				+ colorList + ", category=" + category + ", shop=" + shop + ", sizeList=" + sizeList + "]";
+				+ gender + ", categoryId=" + categoryId + ", shopId=" + shopId + ", deleted=" + deleted + ", imageList="
+				+ imageList + ", colorList=" + colorList + ", category=" + category + ", shop=" + shop + ", stockList="
+				+ stockList + "]";
 	}
+
+
 }
