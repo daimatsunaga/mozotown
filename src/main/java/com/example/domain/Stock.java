@@ -4,6 +4,26 @@ public class Stock {
 	
 	private Integer itemId;
 	
+	private Integer colorId;
+	
+	private Integer sizeId;
+	
+	public Integer getColorId() {
+		return colorId;
+	}
+
+	public void setColorId(Integer colorId) {
+		this.colorId = colorId;
+	}
+
+	public Integer getSizeId() {
+		return sizeId;
+	}
+
+	public void setSizeId(Integer sizeId) {
+		this.sizeId = sizeId;
+	}
+
 	private String color;
 	
 	private String size;
@@ -44,7 +64,9 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [itemId=" + itemId + ", color=" + color + ", size=" + size + ", stock=" + stock
-				+ "]";
+		return "Stock [itemId=" + itemId + ", colorId=" + colorId + ", sizeId=" + sizeId + ", color=" + color
+				+ ", size=" + size + ", stock=" + stock + "]";
 	}
+
+
 }

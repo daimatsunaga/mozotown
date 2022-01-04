@@ -20,7 +20,7 @@ public class ItemController {
 	
 	@GetMapping("")
 	public String toTopPage(Model model) {
-		service.findAll().forEach(i -> System.out.println(i));
+//		service.findAll().forEach(i -> System.out.println(i));
 		List<Item> itemList = service.findAll();
 		model.addAttribute("itemList", itemList);
 		return "top_page";
@@ -29,7 +29,6 @@ public class ItemController {
 	@GetMapping("/detail")
 	public String itemDetail(Integer id, Model model) {
 		Item item = service.findById(id);
-		System.out.println(service.findById(1));
 		model.addAttribute("item", item);
 		return "item_detail";
 	}

@@ -6,6 +6,6 @@
 		
 	<insert id="addCart">
 	   insert into cart(user_id, item_id, color_id, size_id, price) 
-	   values(#{user_id},#{item_id},#{color_id},#{size_id},#{price})
+	   values(#{userId},#{itemId},#{colorId},#{sizeId},#{price})
 	</insert>
 </mapper>

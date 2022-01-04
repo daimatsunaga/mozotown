@@ -80,6 +80,11 @@
                   </td>
                   <td style="vertical-align: middle;">
                     <form th:action="@{/cart/add}" method="POST">
+                      <input type="hidden" name="userId" th:value="${session.user.id}">
+                      <input type="hidden" name="itemId" th:value="${stock.itemId}">
+                      <input type="hidden" name="colorId" th:value="${stock.colorId}">
+                      <input type="hidden" name="sizeId" th:value="${stock.sizeId}">
+                      <input type="hidden" name="price" th:value="${item.price}">
                       <button class="btn btn-outline-info"><i class="fas fa-shopping-cart"></i>カートに入れる</button>
                     </form>
                   </td>

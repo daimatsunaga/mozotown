@@ -17,7 +17,9 @@
 	
 	<resultMap type="com.example.domain.Stock" id="stock">
 		<result column="item_id" property="itemId"/>
+		<result column="color_id" property="colorId"/>
 		<result column="color" property="color"/>
+		<result column="size_id" property="sizeId"/>
 		<result column="size" property="size"/>
 		<result column="stock" property="stock"/>
 	</resultMap>
