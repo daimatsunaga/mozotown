@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ショッピングカート - MOZOTOWN</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<!-- ヘッダー -->
+	<span th:insert="fragment_header::frag_header"></span>
+
+	<!-- パンくずリスト -->
+	<ol class="container mt-4">
+		<div class="row">
+			<li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
+			<li class="breadcrumb-item active" aria-current="page">登録情報</li>
+		</div>
+	</ol>
+
+	<div class="container mb-4">
+		<div class="row">
+			<img style="width: 50px;" src="/img/cart.png" alt="カートアイコン">
+			<h1 class="align-self-end" style="font-size: 24px;">ショッピングカート</h1>
+		</div>
+
+		<div class="col p-5 my-4" style="background-color: #f0f0f0;">
+			<table class="table">
+				<tbody style="color: #808080;">
+					<tr>
+						<td class="col-4" style="vertical-align: middle;" scope="row">
+							<img style="width: 100%;" src="/img/進む松永ロゴ.jpg" alt="商品アイコン">
+						</td>
+						<td style="vertical-align: middle;">
+							<div>DIESEL</div>
+							<div>DIESEL SS22 レディース デニム</div>
+							<div>カラー：インディゴブルー</div>
+							<div>サイズ：24inch</div>
+						</td>
+						<td style="vertical-align: middle;">
+							<div>￥29,700</div>
+						</td>
+						<td style="vertical-align: middle;"><input type="number"
+							id="" name="" min="1" max="5"></td>
+						<td style="vertical-align: middle;">
+							<form action="#" method="GET">
+								<button class="btn btn-outline-primary">削除</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="row d-flex justify-content-end mr-1">
+			<div class="col-xs-offset-2 col-xs-8">
+				<div class="form-group text-center">
+					<span id="total-price">商品合計： 
+						<!-- <span th:text="${#numbers.formatInteger(session.totalPrice,1,'COMMA')}"></span> -->￥2,800
+					</span>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row d-flex justify-content-end mr-1">
+			<div class="col-xs-offset-5 col-xs-3">
+				<div class="form-group">
+					<form action="/toOrder">
+						<input class="form-control btn btn-primary btn-block" type="submit"
+							value="レジへ進む" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Footer-->
+	<footer class="py-5" style="background-color: #f0f0f0;">
+		<div class="container">
+			<p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright
+				&copy; Dai Matsunaga Website 2021</p>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JS-->
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+
+</body>
+</html>
