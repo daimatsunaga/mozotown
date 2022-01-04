@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.repository.CartMapper">
+		
+	<insert id="addCart">
+	   insert into cart(user_id, item_id, color_id, size_id, price) 
+	   values(#{user_id},#{item_id},#{color_id},#{size_id},#{price})
+	</insert>
+</mapper>
