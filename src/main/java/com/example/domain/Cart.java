@@ -12,7 +12,7 @@ public class Cart {
 	
 	private Integer sizeId;
 	
-	private Integer totalPrice;
+	private Integer price;
 	
 	private Integer quantity;
 	
@@ -64,12 +64,12 @@ public class Cart {
 		this.sizeId = sizeId;
 	}
 
-	public Integer getTotalPrice() {
-		return totalPrice;
+	public Integer getprice() {
+		return price;
 	}
 
-	public void setTotalPrice(Integer totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setprice(Integer price) {
+		this.price = price;
 	}
 
 	public Integer getQuantity() {
@@ -114,8 +114,8 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [id=" + id + ", userId=" + userId + ", itemId=" + itemId + ", colorId=" + colorId + ", sizeId="
-				+ sizeId + ", totalPrice=" + totalPrice + ", quantity=" + quantity + ", user=" + user + ", item=" + item
+		return "CartController [id=" + id + ", userId=" + userId + ", itemId=" + itemId + ", colorId=" + colorId + ", sizeId="
+				+ sizeId + ", price=" + price + ", quantity=" + quantity + ", user=" + user + ", item=" + item
 				+ ", color=" + color + ", size=" + size + "]";
 	}
 	
