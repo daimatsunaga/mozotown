@@ -79,7 +79,7 @@
                     <span th:unless="${stock.stock <= 3}">在庫あり</span>
                   </td>
                   <td style="vertical-align: middle;">
-                    <form action="#" method="POST">
+                    <form th:action="@{/cart/add}" method="POST">
                       <button class="btn btn-outline-info"><i class="fas fa-shopping-cart"></i>カートに入れる</button>
                     </form>
                   </td>
@@ -92,15 +92,9 @@
           </div>
             <div class="mb-4" style="font-size: 20px;">アイテム説明</div>
             <div th:text="${item.itemInfo}">G.O.C(ジーオーシー) スタンドカラーショートペディン 中綿ジャケット
-
               韓国系ストリートカジュアルで最もトレンドな秋冬アウターのショートペディン
-              
               昨年大人気だったGOCのショートペディンが今年はS～Lのサイズ展開と撥水加工を施しリニューアル。
               今季は新色としてトレンドカラーであるブルーグレー、グレイッシュベージュと数量限定カラーのシンセティックレザータイプ(ブラックその他２)を追加。</div>
-          <div>
-
-          </div>
-
           <hr>
         </div>
       </div>
