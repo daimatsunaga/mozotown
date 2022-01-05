@@ -34,7 +34,9 @@
 				<tbody style="color: #808080;">
 					<tr th:each="cart : ${cartList}">
 						<td class="col-4" style="vertical-align: middle;" scope="row">
-							<img style="width: 100%;" th:src="@{/img/} + ${cart.item.imageList[0].imagePass}" alt="商品アイコン">
+							<a th:href="@{/item/detail?id=} + ${cart.item.id}">
+								<img style="width: 100%;" th:src="@{/img/} + ${cart.item.imageList[0].imagePass}" alt="商品アイコン">
+							</a>
 						</td>
 						<td style="vertical-align: middle;">
 							<div th:text="${cart.item.shop.shopName}">DIESEL</div>
