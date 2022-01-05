@@ -21,4 +21,8 @@ public class CartService {
 	public List<Cart> showCart(Integer userId) {
 		return mapper.showCart(userId);
 	}
+	
+	public void deleteById(Integer id) {
+		mapper.deleteById(id);
+	}
 }

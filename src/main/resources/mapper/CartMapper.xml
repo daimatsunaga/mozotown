@@ -94,4 +94,9 @@
 		left join stock as st on i.id = st.item_id and ca.color_id = st.color_id and ca.size_id = st.size_id
   		where ca.user_id = #{userId};
 	</select>
+	
+	<delete id="deleteById">
+		delete from cart where id = #{id}
+	</delete>
+	
 </mapper>

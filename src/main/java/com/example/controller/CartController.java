@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Cart;
+import com.example.domain.User;
 import com.example.form.CartForm;
 import com.example.service.CartService;
 
@@ -20,14 +23,18 @@ public class CartController {
 	@Autowired
 	private CartService service;
 	
-	@PostMapping("")
-	public String toCart(Model model, Integer userId) {
-		if(userId == null) {
+	@Autowired
+	private HttpSession session;
+	
+	@RequestMapping("")
+	public String toCart(Model model) {
+		//セッションに保存しているユーザー情報を取得
+		User user = (User) session.getAttribute("user");
+		if(user == null) {
 			return "redirect:/user/toLogin";
 		}
 		
-		List<Cart> cartList = service.showCart(userId);
-//		service.showCart(1).forEach(i -> System.out.println(userId));
+		List<Cart> cartList = service.showCart(user.getId());
 		
 		//カート内の商品の合計金額を計算
 		Integer totalPrice = 0;
@@ -44,6 +51,12 @@ public class CartController {
 		Cart cart = new Cart();
 		BeanUtils.copyProperties(form, cart);
 		service.addCart(cart);
+		return "redirect:/cart";
+	}
+	
+	@PostMapping("/delete")
+	public String deleteCart(Integer id) {
+		service.deleteById(id);
 		return "redirect:/cart";
 	}
 }

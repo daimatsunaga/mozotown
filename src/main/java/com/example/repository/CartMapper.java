@@ -14,4 +14,7 @@ public interface CartMapper {
 
 	//カートの表示
 	public List<Cart> showCart(Integer userId);
+	
+	//カート内の商品削除
+	public void deleteById(Integer id);
 }
