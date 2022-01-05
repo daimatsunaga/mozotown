@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class CartService {
 	
 	public void addCart(Cart addCart) {
 		mapper.addCart(addCart);
+	}
+	
+	public List<Cart> showCart(Integer userId) {
+		return mapper.showCart(userId);
 	}
 }

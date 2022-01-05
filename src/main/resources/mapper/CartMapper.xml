@@ -4,8 +4,94 @@
         
 <mapper namespace="com.example.repository.CartMapper">
 		
+	
+	<resultMap type="com.example.domain.Item" id="item">
+		<id column="item_id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+		<result column="item_info" property="itemInfo"/>
+		<result column="gender" property="gender"/>
+		<result column="category_id" property="categoryId"/>
+		<result column="shop_id" property="shopId"/>
+		<result column="deleted" property="deleted"/>
+		<association property="category" resultMap="category"/>
+		<association property="shop" resultMap="shop"/>
+ 		<collection property="imageList" resultMap="image"/>
+ 		<collection property="stockList" resultMap="stock"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Image" id="image">
+		<id column="image_id" property="id"/>
+		<result column="image_pass" property="imagePass"/>
+		<result column="item_id" property="itemId"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Color" id="color">
+		<id column="color_id" property="id"/>
+		<result column="color" property="color"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Size" id="size">
+		<id column="size_id" property="id"/>
+		<result column="size" property="size"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Stock" id="stock">
+		<result column="item_id" property="itemId"/>
+		<result column="color_id" property="colorId"/>
+		<result column="color" property="color"/>
+		<result column="size_id" property="sizeId"/>
+		<result column="size" property="size"/>
+		<result column="stock" property="stock"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Category" id="category">
+		<id column="category_id" property="id"/>
+		<result column="category" property="category"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Shop" id="shop">
+		<id column="shop_id" property="id"/>
+		<result column="shop_name" property="shopName"/>
+		<result column="shop_detail" property="shopDetail"/>
+		<result column="shop_image_pass" property="imagePass"/>
+		<result column="deleted" property="deleted"/>
+		<result column="shop_name_kana" property="shopNameKana"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Cart" id="cart">
+		<id column="cart_id" property="id"/>
+		<result column="user_id" property="userId"/>
+ 		<result column="item_id" property="itemId"/>
+ 		<result column="color_id" property="colorId"/>
+		<result column="size_id" property="sizeId"/>
+		<result column="price" property="price"/>
+		<result column="quantity" property="quantity"/>
+ 		<association property="color" resultMap="color"/>
+ 		<association property="size" resultMap="size"/>
+   		<association property="item" resultMap="item"/>
+	</resultMap>
+	
 	<insert id="addCart">
 	   insert into cart(user_id, item_id, color_id, size_id, price) 
 	   values(#{userId},#{itemId},#{colorId},#{sizeId},#{price})
 	</insert>
+	
+	<select id="showCart" resultMap="cart">
+		select ca.id as cart_id, ca.user_id as user_id, ca.item_id as item_id, ca.color_id as color_id, ca.size_id as size_id, ca.price as price, ca.quantity as quantity, 
+		co.color, 
+		si.size,
+		i.price, i.name, i.item_info, i.gender, i.category_id, i.shop_id, i.deleted,
+		sh.id as shop_id, sh.shop_name, sh.shop_name_kana, sh.shop_detail, sh.image_pass as shop_image_pass, sh.deleted,
+		im.id as image_id, im.image_pass, im.item_id, 
+		st.stock
+		from cart as ca 
+		left join color as co on ca.color_id = co.id 
+		left join size as si on ca.size_id = si.id 
+		left join items as i on ca.item_id = i.id 
+		left join shops as sh on i.shop_id = sh.id 
+		left join images as im on i.id = im.item_id 
+		left join stock as st on i.id = st.item_id and ca.color_id = st.color_id and ca.size_id = st.size_id
+  		where ca.user_id = #{userId};
+	</select>
 </mapper>

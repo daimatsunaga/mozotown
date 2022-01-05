@@ -64,14 +64,6 @@ public class Cart {
 		this.sizeId = sizeId;
 	}
 
-	public Integer getprice() {
-		return price;
-	}
-
-	public void setprice(Integer price) {
-		this.price = price;
-	}
-
 	public Integer getQuantity() {
 		return quantity;
 	}
@@ -112,12 +104,21 @@ public class Cart {
 		this.size = size;
 	}
 
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
-		return "CartController [id=" + id + ", userId=" + userId + ", itemId=" + itemId + ", colorId=" + colorId + ", sizeId="
+		return "Cart [id=" + id + ", userId=" + userId + ", itemId=" + itemId + ", colorId=" + colorId + ", sizeId="
 				+ sizeId + ", price=" + price + ", quantity=" + quantity + ", user=" + user + ", item=" + item
 				+ ", color=" + color + ", size=" + size + "]";
 	}
+
 	
 	
 	
