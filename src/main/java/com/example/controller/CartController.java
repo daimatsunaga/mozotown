@@ -43,13 +43,20 @@ public class CartController {
 		}
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("totalPrice", totalPrice);
+		System.out.println(cartList);
 		return "cart";
 	}
 	
 	@PostMapping("/add") 
 	public String addCart(CartForm form) {
+		//ログインしていない場合にはログイン画面に遷移
+		if(form.getUserId() == null) {
+			return "redirect:/user/toLogin";
+		}
+		
 		Cart cart = new Cart();
 		BeanUtils.copyProperties(form, cart);
+		//カート内に同一商品があれば、update文を実行
 		if(service.CountInCart(cart) == null) {
 			service.addCart(cart);
 		} else {
