@@ -50,7 +50,11 @@ public class CartController {
 	public String addCart(CartForm form) {
 		Cart cart = new Cart();
 		BeanUtils.copyProperties(form, cart);
-		service.addCart(cart);
+		if(service.CountInCart(cart) == null) {
+			service.addCart(cart);
+		} else {
+			service.updateQuantity(cart);
+		}
 		return "redirect:/cart";
 	}
 	

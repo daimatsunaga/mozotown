@@ -25,4 +25,12 @@ public class CartService {
 	public void deleteById(Integer id) {
 		mapper.deleteById(id);
 	}
+	
+	public Integer CountInCart(Cart sertchCart) {
+		return mapper.CountInCart(sertchCart);
+	}
+	
+	public void updateQuantity(Cart updateCart) {
+		mapper.updateQuantity(updateCart);
+	}
 }

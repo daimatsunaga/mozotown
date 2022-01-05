@@ -96,8 +96,18 @@
   		order by im.id;
 	</select>
 	
+	<select id="CountInCart" resultType="Integer">
+		select quantity 
+		from cart 
+  		where user_id = #{userId} and item_id = #{itemId} and color_id = #{colorId} and size_id = #{sizeId};
+	</select>
+	
 	<delete id="deleteById">
 		delete from cart where id = #{id}
 	</delete>
 	
+	<update id="updateQuantity">
+		update cart set quantity = quantity + 1 
+		where user_id = #{userId} and item_id = #{itemId} and color_id = #{colorId} and size_id = #{sizeId};
+	</update>
 </mapper>

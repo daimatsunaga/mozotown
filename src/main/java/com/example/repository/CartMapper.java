@@ -17,4 +17,10 @@ public interface CartMapper {
 	
 	//カート内の商品削除
 	public void deleteById(Integer id);
+	
+	//カート内の商品検索
+	public Integer CountInCart(Cart sertchCart);
+	
+	//カート内に同じ評品があった場合、数（quantity）を1増やす。
+	public void updateQuantity(Cart updateCart);
 }
