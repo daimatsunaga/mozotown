@@ -44,7 +44,8 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#!">お気に入り</a></li>
 					</ul>
-					<form class="d-flex" method="get" th:action="@{/cart}">
+					<form class="d-flex" method="post" th:action="@{/cart}">
+						<input th:unless="${session.user == null}" type="hidden" name="userId" th:value="${session.user.id}">
 						<button class="btn btn-outline-dark" type="submit">
 							<i class="bi-cart-fill me-1"></i> Cart <span
 								class="badge bg-dark text-white ms-1 rounded-pill">0</span>
