@@ -92,7 +92,8 @@
 		left join shops as sh on i.shop_id = sh.id 
 		left join images as im on i.id = im.item_id 
 		left join stock as st on i.id = st.item_id and ca.color_id = st.color_id and ca.size_id = st.size_id
-  		where ca.user_id = #{userId};
+  		where ca.user_id = #{userId} 
+  		order by im.id;
 	</select>
 	
 	<delete id="deleteById">

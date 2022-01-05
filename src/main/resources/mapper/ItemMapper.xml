@@ -69,7 +69,8 @@
  		left join stock as st on i.id = st.item_id 
   		left join color as co on st.color_id = co.id 
   		left join size as si on st.size_id = si.id
-  		left join images as im on i.id = im.item_id
+  		left join images as im on i.id = im.item_id 
+  		order by im.id;
 	</select>
 	
  	<select id="findById" resultMap="item">
@@ -88,7 +89,8 @@
   		left join color as co on st.color_id = co.id 
   		left join size as si on st.size_id = si.id
   		left join images as im on i.id = im.item_id
-  		where i.id = #{id};
+  		where i.id = #{id} 
+  		order by im.id;
 	</select>
 	
 	<select id="findByShopId" resultMap="item">
