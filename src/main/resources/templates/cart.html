@@ -46,7 +46,7 @@
 							<div th:text="￥ + ${#numbers.formatInteger(cart.price, 1, 'COMMA')}">￥29,700</div>
 						</td>
 						<td style="vertical-align: middle;">
-							<input type="number" id="" name="" min="1" max="5" value=1>
+							<input type="number" id="" name="" min="1" max="5" th:value="${cart.quantity}">
 						</td>
 						<td style="vertical-align: middle;">
 							<form th:action="@{/cart/delete}" method="post">
