@@ -43,7 +43,6 @@ public class CartController {
 		}
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("totalPrice", totalPrice);
-		System.out.println(cartList);
 		return "cart";
 	}
 	

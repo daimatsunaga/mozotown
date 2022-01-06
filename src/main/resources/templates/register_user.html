@@ -128,7 +128,7 @@
               for="inputError"
               >郵便番号を入力してください</label
             >
-            <input type="button" value="住所検索" />
+            <input type="button" value="住所検索" id="get_address_btn"/>
             <input
               name="zipCode"
               type="text"
@@ -211,5 +211,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script th:src="@{/js/bootstrap.js}"></script>
   <!-- /Bootstrap -->
+  <script th:src="@{/js/get_address.js}"></script>
 </body>
 </html>

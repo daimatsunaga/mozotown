@@ -130,7 +130,7 @@
                   for="inputError"
                   >郵便番号を入力してください</label
                 >
-                <input type="button" value="住所検索" />
+                <input type="button" value="住所検索" id="get_address_btn"/>
                 <input th:value="${session.user.zipCode}"
             	  name="zipCode"
                   type="text"
@@ -175,9 +175,10 @@
     <div class="container"><p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright &copy; Dai Matsunaga Website 2021</p></div>
   </footer>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
+	<script th:src="@{/js/get_address.js}"></script>
 </body>
 </html>
