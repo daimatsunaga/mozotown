@@ -39,7 +39,7 @@ public class CartController {
 		//カート内の商品の合計金額を計算
 		Integer totalPrice = 0;
 		for(Cart cart : cartList) {
-			totalPrice += cart.getPrice();
+			totalPrice += cart.getPrice() * cart.getQuantity();
 		}
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("totalPrice", totalPrice);
