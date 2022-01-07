@@ -9,7 +9,11 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-
+<style type="text/css">
+.display-none {
+	display: none;
+}
+</style>
 </head>
 <body>
 	<span th:insert="fragment_header::frag_header"></span>
@@ -35,8 +39,10 @@
 				<form th:action="@{/like/shop}" method="post">
 					<input th:unless="${session.user == null}" type="hidden" name="userId" th:value="${session.user.id}" id="userId">
 					<input type="hidden" name="shopId" th:value="${shop.id}" id="shopId">
-					<button type="button" class="btn btn-outline-success px-4"
+					<button th:classappend="${likes == 1}? display-none" type="button" class="btn btn-outline-success px-4"
 						style="border-radius: 25px;" id="likes_shop_btn">♡お気に入りショップに追加</button>
+					<button th:classappend="${likes == 0}? display-none" type="button" class="btn btn-outline-success px-4"
+						style="border-radius: 25px;" id="delete_likes_shop_btn">♡お気に入りショップに追加済み</button>
 				</form>
 				<p class="mt-5" th:text="${shop.shopDetail}">
 					日本の最先端ブランド。進む松永。壊れにくく長く使用すると味が出てくることで多くの人を虜にしています。</p>

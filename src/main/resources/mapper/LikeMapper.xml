@@ -8,5 +8,13 @@
 	   insert into likes_shop(user_id, shop_id) 
 	   values(#{userId},#{shopId})
 	</insert>
+	
+	<delete id="deleteLikeShop">
+		delete from likes_shop where user_id = #{userId} and shop_id = #{shopId};
+	</delete>
+	
+	<select id="serchLikeShop" resultType="com.example.domain.LikesShop">
+		select * from likes_shop where user_id = #{userId} and shop_id = #{shopId};
+	</select>
 
 </mapper>
