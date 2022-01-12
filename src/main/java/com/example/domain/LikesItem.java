@@ -7,6 +7,10 @@ public class LikesItem {
 	private Integer userId;
 	//どのアイテムを
 	private Integer ItemId;
+	//どの色
+	private Integer colorId;
+	//どのサイズ
+	private Integer sizeId;
 	
 	//ゲッターセッター
 	public Integer getId() {
@@ -27,10 +31,22 @@ public class LikesItem {
 	public void setItemId(Integer itemId) {
 		ItemId = itemId;
 	}
+	public Integer getColorId() {
+		return colorId;
+	}
+	public void setColorId(Integer colorId) {
+		this.colorId = colorId;
+	}
+	public Integer getSizeId() {
+		return sizeId;
+	}
+	public void setSizeId(Integer sizeId) {
+		this.sizeId = sizeId;
+	}
 	
-	//toStringのオーバーライド
 	@Override
 	public String toString() {
-		return "LikesItem [id=" + id + ", userId=" + userId + ", ItemId=" + ItemId + "]";
+		return "LikesItem [id=" + id + ", userId=" + userId + ", ItemId=" + ItemId + ", colorId=" + colorId
+				+ ", sizeId=" + sizeId + "]";
 	}
 }
