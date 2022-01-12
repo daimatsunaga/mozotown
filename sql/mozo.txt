@@ -72,8 +72,12 @@ CREATE TABLE likes_item(
   id serial primary key not null,
   user_id bigint(20) unsigned not null,
   item_id bigint(20) unsigned not null, 
+  color_id bigint(20) unsigned not null,
+  size_id bigint(20) unsigned not null,
   FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
-  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id)
+  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
+  FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id)
 );
 
 CREATE TABLE likes_shop(
@@ -85,6 +89,7 @@ CREATE TABLE likes_shop(
 );
 
 CREATE TABLE stock(
+  id serial primary key not null,
   item_id bigint(20) unsigned not null,
   color_id bigint(20) unsigned not null,
   size_id bigint(20) unsigned not null,
@@ -108,6 +113,26 @@ CREATE TABLE cart(
   FOREIGN KEY fk_color_id(color_id) REFERENCES color(id)
 );
 
+CREATE TABLE payment_method(
+  id serial primary key not null,
+  payment_method varchar(20) not null
+);
+
+CREATE TABLE order(
+  id serial primary key not null,
+  user_id bigint(20) unsigned not null,
+  status integer default 0 not null,
+  price integer not null,
+  quantity integer default 1 not null,
+  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
+  FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
+  FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id)
+);
+
+INSERT INTO payment_method(payment_method) VALUES('ツケ払い');
+INSERT INTO payment_method(payment_method) VALUES('クレジットカード');
+INSERT INTO payment_method(payment_method) VALUES('代金引換');
 
 INSERT INTO shops(shop_name, shop_detail, image_pass, shop_name_kana) VALUES('吉田鞄', '世界中で話題のプロジェクトを手掛けるクリエイティブなデザインカンパニー、SPECIAL PRODUCT DESIGNが、誰かについ話したくなるような、ストーリーのあるアイテムをご紹介するショップです。', '吉田鞄ロゴ.jpg', 'ヨシダカバン');
 INSERT INTO shops(shop_name, shop_detail, image_pass, shop_name_kana) VALUES('コズミックチェイリー', '日本に2つとないブランド。あなたを虜にすること間違いなし。', 'コズミックチェイリーロゴ.jpg', 'コズミックチェイリー');
