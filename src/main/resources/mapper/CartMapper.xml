@@ -37,6 +37,7 @@
 	</resultMap>
 	
 	<resultMap type="com.example.domain.Stock" id="stock">
+		<id column="stock_id" property="id"/>
 		<result column="item_id" property="itemId"/>
 		<result column="color_id" property="colorId"/>
 		<result column="color" property="color"/>
