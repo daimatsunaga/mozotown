@@ -16,5 +16,15 @@
 	<select id="serchLikeShop" resultType="com.example.domain.LikesShop">
 		select * from likes_shop where user_id = #{userId} and shop_id = #{shopId};
 	</select>
+	
+	<insert id="likeItem">
+	   insert into likes_item(user_id, item_id, color_id, size_id) 
+	   values(#{userId},#{itemId},#{colorId},#{sizeId})
+	</insert>
+	
+	<!-- stockテーブルから情報を入手しLikesItemドメインに値をセット -->
+	<select id="serchStock" resultType="com.example.domain.LikesItem">
+		select * from stock where id = #{stockId};
+	</select>
 
 </mapper>
