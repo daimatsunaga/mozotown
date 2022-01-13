@@ -37,7 +37,6 @@ public class LikeApiController {
 		LikesItem likeItem = mapper.serchStock(stockId);
 		User user = (User) session.getAttribute("user");
 		likeItem.setUserId(user.getId());
-		System.out.println(likeItem);
 		mapper.likeItem(likeItem);
 	}
 }
