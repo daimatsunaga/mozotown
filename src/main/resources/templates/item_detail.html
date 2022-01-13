@@ -80,7 +80,7 @@
                   </td>
                   <td style="vertical-align: middle;">
                     <form th:action="@{/cart/add}" method="POST">
-                      <input th:unless="${session.user == null}" type="hidden" name="userId" th:value="${session.user.id}">
+                      <input th:unless="${session.user == null}" type="hidden" name="userId" th:value="${session.user.id}" id="userId">
                       <input type="hidden" name="itemId" th:value="${stock.itemId}">
                       <input type="hidden" name="colorId" th:value="${stock.colorId}">
                       <input type="hidden" name="sizeId" th:value="${stock.sizeId}">

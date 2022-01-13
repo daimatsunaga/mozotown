@@ -5,6 +5,11 @@ $(function() {
    e.preventDefault();
    //index番号の取得
    const id = $(this).attr('id').replace("like", "");
+   //ユーザーIDの取得
+   const userId = $("#userId").val();
+   if(userId == null){
+     alert('ログイン後、使用可能になります');
+   } else{
     $.ajax({
         url: 'http://localhost:8080/like/item',
         dataType: 'text',
@@ -18,11 +23,13 @@ $(function() {
 		 $("#like" + id).css('color', 'red');
 		 alert('お気に入りに追加しました');
     }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+      $("#like" + id).css('color', 'red');
+      alert('お気に入りに登録済みです');
       // 失敗時には、その旨をダイアログ表示
-      alert('ログイン後、使用可能になります');
       console.log('XMLHttpRequest : ' + XMLHttpRequest.status);
       console.log('textStatus     : ' + textStatus);
       console.log('errorThrown    : ' + errorThrown.message);
     });
+   }
   });
 });
