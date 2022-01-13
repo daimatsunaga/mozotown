@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お気に入り - MOZOTOWN</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<span th:insert="fragment_header::frag_header"></span>
+
+	<!-- パンくずリスト -->
+	<ol class="container">
+		<div class="row">
+			<li class="breadcrumb-item"><a th:href="@{/item}">MOZOTOWN</a></li>
+			<li class="breadcrumb-item active" aria-current="page">お気に入り</li>
+		</div>
+	</ol>
+
+	<div class="container mb-4">
+		<div class="row">
+			<h1 th:text="${session.userName} + 様の登録情報" class="align-self-end"
+				style="font-size: 24px;">〇〇さんのお気に入り</h1>
+		</div>
+	</div>
+
+  <div class="container">
+
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item"><a class="nav-link active" id="home-tab"
+				data-toggle="tab" href="#item" role="tab" aria-controls="home"
+				aria-selected="true">アイテム</a></li>
+			<li class="nav-item"><a class="nav-link" id="profile-tab"
+				data-toggle="tab" href="#shop" role="tab" aria-controls="profile"
+				aria-selected="false">ショップ</a></li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="container px-4 px-lg-5 mt-5 tab-pane fade show active" id="item" role="tabpanel"
+				aria-labelledby="home-tab">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:each="item: ${itemList}">
+						<div class="card h-100">
+							<!-- Product image-->
+							<a th:href="@{/item/detail?id=} + ${item.id}">
+								<img class="card-img-top" style="height: 230px"
+									th:src="@{/img/} + ${item.imageList[0].imagePass}"
+									alt="..." />
+							</a>
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-start">
+									<!-- Product name-->
+									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
+									<!-- Product category-->
+									<h5 class="fw-bolder" th:text="${item.category.category}" style="color: #808080; font-size: 12px;">Fancy Product</h5>
+									<!-- Product price-->
+									<h6 class="fw-bolder" th:text="￥ + ${#numbers.formatInteger(item.price, 1, 'COMMA')}" style="font-size: 20px">￥4,300</h6>
+									<!-- Product colors-->
+									<div class="fw-bolder" th:text="全 + ${item.colorList.size} + 色" style="color: #808080; font-size: 10px">全３色</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container px-4 px-lg-5 mt-5 tab-pane fade" id="shop" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:if="${item.gender == 1}" th:each="item: ${itemList}">
+						<div class="card h-100">
+							<!-- shop image-->
+							<a th:href="@{/item/detail?id=} + ${item.id}">
+								<img class="card-img-top" style="height: 230px"
+									th:src="@{/img/} + ${item.imageList[0].imagePass}"
+									alt="..." />
+							</a>
+							<!-- shop details-->
+							<div class="card-body p-4">
+								<div class="text-start">
+									<!-- shop name-->
+									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer-->
+	<footer class="py-5" style="background-color: #f0f0f0;">
+		<div class="container">
+			<p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright
+				&copy; Dai Matsunaga Website 2021</p>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JS-->
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+</body>
+</html>
