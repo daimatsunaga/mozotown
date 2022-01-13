@@ -3,6 +3,21 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
 <mapper namespace="com.example.repository.UserMapper">
+
+	<resultMap type="com.example.domain.LikesShop" id="likesShop">
+		<result column="user_id" property="userId"/>
+		<result column="shop_id" property="shopId"/>
+		<association property="shop" resultMap="shop"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Shop" id="shop">
+		<id column="shop_id" property="id"/>
+		<result column="shop_name" property="shopName"/>
+		<result column="shop_detail" property="shopDetail"/>
+		<result column="shop_image_pass" property="imagePass"/>
+		<result column="deleted" property="deleted"/>
+		<result column="shop_name_kana" property="shopNameKana"/>
+	</resultMap>
 	
 	<insert id="insert">
 	   insert into users(gender, birthday, email, zip_code, address, password) 
@@ -32,4 +47,12 @@
 	<update id="updateUserPassword">
 		update users set password = #{newPassword} where id = #{id};
 	</update>
+	
+	<select id="getLikesShop" resultMap="likesShop">
+		select ls.user_id as user_id, ls.shop_id as shop_id, 
+		sh.id as shop_id, sh.shop_name, sh.shop_name_kana, sh.shop_detail, sh.image_pass as shop_image_pass, sh.deleted
+		from likes_shop as ls
+		left join shops as sh on ls.shop_id = sh.id  
+  		where ls.user_id= #{userId};
+	</select>
 </mapper>

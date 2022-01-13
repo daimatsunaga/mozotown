@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.LikesShop;
 import com.example.domain.User;
 import com.example.form.UserEmailUpdateForm;
 import com.example.form.UserInfoUpdateForm;
@@ -200,7 +201,14 @@ public class UserController {
 	}
 	
 	@GetMapping("/likes")
-	public String toLikes() {
+	public String toLikes(Model model) {
+		User user = (User) session.getAttribute("user");
+		//ログインしていない場合にはログイン画面に遷移
+		if(user == null) {
+			return "redirect:/user/toLogin";
+		}
+		List<LikesShop> listLikesShop = service.getLikesShop(user.getId());
+		model.addAttribute("listLikesShop", listLikesShop);
 		return "like";
 	}
   }

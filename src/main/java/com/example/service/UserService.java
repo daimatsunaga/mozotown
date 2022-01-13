@@ -1,10 +1,13 @@
 package com.example.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.LikesShop;
 import com.example.domain.User;
 import com.example.repository.CartMapper;
 import com.example.repository.UserMapper;
@@ -54,5 +57,9 @@ public class UserService {
 	public void updatePassword(String newPassword, Integer id) {
 		mapper.updateUserPassword(newPassword, id);
 		session.setAttribute("user", mapper.findById(id));
+	}
+	
+	public List<LikesShop> getLikesShop(Integer userId) {
+		return mapper.getLikesShop(userId);
 	}
 }

@@ -8,6 +8,8 @@ public class LikesShop {
 	private Integer userId;
 	//どのお店を
 	private Integer shopId;
+	//結合用
+	private Shop shop;
 	
 	//ゲッターセッター
 	public Integer getId() {
@@ -28,10 +30,15 @@ public class LikesShop {
 	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
-	
-	//toStringのオーバーライド
+	public Shop getShop() {
+		return shop;
+	}
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
 	@Override
 	public String toString() {
-		return "LikesShop [id=" + id + ", userId=" + userId + ", shopId=" + shopId + "]";
+		return "LikesShop [id=" + id + ", userId=" + userId + ", shopId=" + shopId + ", shop=" + shop + "]";
 	}
+	
 }

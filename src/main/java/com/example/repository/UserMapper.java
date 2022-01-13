@@ -1,8 +1,11 @@
 package com.example.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.example.domain.LikesShop;
 import com.example.domain.User;
 
 @Mapper
@@ -28,4 +31,10 @@ public interface UserMapper {
 	
 	//ユーザー更新(パスワード)
 	public void updateUserPassword(@Param("newPassword")String newPassword, @Param("id")Integer id);
+	
+	//お気に入り（アイテム）取得
+	public List<LikesShop> getLikesShop(Integer userId);
+	
+	//お気に入り（ショップ）取得
+	
 }
