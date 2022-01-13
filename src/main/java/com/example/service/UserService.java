@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.User;
+import com.example.repository.CartMapper;
 import com.example.repository.UserMapper;
 
 @Service
@@ -13,6 +14,8 @@ public class UserService {
 
 	@Autowired
 	private UserMapper mapper;
+	@Autowired
+	private CartMapper cartMapper;
 	
 	@Autowired
 	private HttpSession session;
@@ -22,7 +25,10 @@ public class UserService {
 	}
 	
 	public User login(String email) {
-		return mapper.findByEmail(email);
+		User user = mapper.findByEmail(email);
+		Integer sumOfCart = cartMapper.sumCart(user.getId());
+		session.setAttribute("sumOfCart", sumOfCart);
+		return user;
 	}
 	
 	public void deleteById(Integer id) {

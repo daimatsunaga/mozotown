@@ -23,4 +23,7 @@ public interface CartMapper {
 	
 	//カート内に同じ評品があった場合、数（quantity）を1増やす。
 	public void updateQuantity(Cart updateCart);
+	
+	//カート内の商品数
+	public Integer sumCart(Integer userId);
 }

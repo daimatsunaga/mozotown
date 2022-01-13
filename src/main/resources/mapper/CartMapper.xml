@@ -111,4 +111,10 @@
 		update cart set quantity = quantity + 1 
 		where user_id = #{userId} and item_id = #{itemId} and color_id = #{colorId} and size_id = #{sizeId};
 	</update>
+	
+	<select id="sumCart" resultType="Integer">
+		select sum(quantity) 
+		from cart 
+  		where user_id = #{userId};
+	</select>
 </mapper>

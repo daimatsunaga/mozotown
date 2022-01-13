@@ -47,8 +47,9 @@
 					<form class="d-flex" method="post" th:action="@{/cart}">
 						<input th:unless="${session.user == null}" type="hidden" name="userId" th:value="${session.user.id}">
 						<button class="btn btn-outline-dark" type="submit">
-							<i class="bi-cart-fill me-1"></i> Cart <span
-								class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+							<i class="bi-cart-fill me-1"></i> Cart 
+							<span class="badge bg-dark text-white ms-1 rounded-pill" th:unless="${session.sumOfCart == null}" th:text="${session.sumOfCart}">0</span>
+							<span class="badge bg-dark text-white ms-1 rounded-pill" th:if="${session.sumOfCart == null}">0</span>
 						</button>
 					</form>
 				</div>
