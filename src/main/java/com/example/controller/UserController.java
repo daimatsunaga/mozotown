@@ -198,4 +198,9 @@ public class UserController {
 		service.updatePassword(form.getNewPassword(), form.getId());
 		return "redirect:/user/detail";
 	}
+	
+	@GetMapping("/likes")
+	public String toLikes() {
+		return "like";
+	}
   }
