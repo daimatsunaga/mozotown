@@ -77,7 +77,8 @@ CREATE TABLE likes_item(
   FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
   FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
   FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
-  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id)
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
+  UNIQUE(user_id, item_id, color_id, size_id)
 );
 
 CREATE TABLE likes_shop(
