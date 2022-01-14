@@ -43,25 +43,25 @@
 			<div class="container px-4 px-lg-5 mt-5 tab-pane fade show active" id="item" role="tabpanel"
 				aria-labelledby="home-tab">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<div class="col mb-5" th:each="item: ${itemList}">
+					<div class="col mb-5" th:each="likesItem: ${listLikesItem}">
 						<div class="card h-100">
 							<!-- Product image-->
-							<a th:href="@{/item/detail?id=} + ${item.id}">
+							<a th:href="@{/item/detail?id=} + ${likesItem.itemId}">
 								<img class="card-img-top" style="height: 230px"
-									th:src="@{/img/} + ${item.imageList[0].imagePass}"
+									th:src="@{/img/} + ${likesItem.item.imageList[0].imagePass}"
 									alt="..." />
 							</a>
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-start">
 									<!-- Product name-->
-									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
-									<!-- Product category-->
-									<h5 class="fw-bolder" th:text="${item.category.category}" style="color: #808080; font-size: 12px;">Fancy Product</h5>
+									<h5 class="fw-bolder" th:text="${likesItem.item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
 									<!-- Product price-->
-									<h6 class="fw-bolder" th:text="￥ + ${#numbers.formatInteger(item.price, 1, 'COMMA')}" style="font-size: 20px">￥4,300</h6>
-									<!-- Product colors-->
-									<div class="fw-bolder" th:text="全 + ${item.colorList.size} + 色" style="color: #808080; font-size: 10px">全３色</div>
+									<h6 class="fw-bolder" th:text="￥ + ${#numbers.formatInteger(likesItem.item.price, 1, 'COMMA')}" style="font-size: 20px">￥4,300</h6>
+									<!-- Product size-->
+									<div class="fw-bolder" th:text="${likesItem.color.color}" style="color: #808080; font-size: 10px">ブルー</div>
+									<!-- Product color-->
+									<div class="fw-bolder" th:text="${likesItem.size.size}" style="color: #808080; font-size: 10px">M</div>
 								</div>
 							</div>
 						</div>

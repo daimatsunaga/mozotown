@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.LikesItem;
 import com.example.domain.LikesShop;
 import com.example.domain.User;
 import com.example.form.UserEmailUpdateForm;
@@ -207,8 +208,14 @@ public class UserController {
 		if(user == null) {
 			return "redirect:/user/toLogin";
 		}
+		//お気に入りショップをスコープに格納
 		List<LikesShop> listLikesShop = service.getLikesShop(user.getId());
 		model.addAttribute("listLikesShop", listLikesShop);
+		
+		//お気に入りアイテムをスコープに格納
+		System.out.println(service.getLikesItem(user.getId()));
+		List<LikesItem> listLikesItem = service.getLikesItem(user.getId());
+		model.addAttribute("listLikesItem", listLikesItem);
 		return "like";
 	}
   }

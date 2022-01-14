@@ -10,6 +10,37 @@
 		<association property="shop" resultMap="shop"/>
 	</resultMap>
 	
+	<resultMap type="com.example.domain.LikesItem" id="likesItem">
+		<result column="user_id" property="userId"/>
+		<result column="item_id" property="itemId"/>
+		<result column="color_id" property="colorId"/>
+		<result column="size_id" property="sizeId"/>
+		<association property="item" resultMap="item"/>
+		<association property="color" resultMap="color"/>
+		<association property="size" resultMap="size"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Image" id="image">
+		<id column="image_id" property="id"/>
+		<result column="image_pass" property="imagePass"/>
+		<result column="item_id" property="itemId"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Color" id="color">
+		<id column="color_id" property="id"/>
+		<result column="color" property="color"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Size" id="size">
+		<id column="size_id" property="id"/>
+		<result column="size" property="size"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Category" id="category">
+		<id column="category_id" property="id"/>
+		<result column="category" property="category"/>
+	</resultMap>
+	
 	<resultMap type="com.example.domain.Shop" id="shop">
 		<id column="shop_id" property="id"/>
 		<result column="shop_name" property="shopName"/>
@@ -17,6 +48,21 @@
 		<result column="shop_image_pass" property="imagePass"/>
 		<result column="deleted" property="deleted"/>
 		<result column="shop_name_kana" property="shopNameKana"/>
+	</resultMap>
+	
+	<resultMap type="com.example.domain.Item" id="item">
+		<id column="item_id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+		<result column="item_info" property="itemInfo"/>
+		<result column="gender" property="gender"/>
+		<result column="category_id" property="categoryId"/>
+		<result column="shop_id" property="shopId"/>
+		<result column="deleted" property="deleted"/>
+		<association property="category" resultMap="category"/>
+		<association property="shop" resultMap="shop"/>
+ 		<collection property="colorList" resultMap="color"/>
+ 		<collection property="imageList" resultMap="image"/>
 	</resultMap>
 	
 	<insert id="insert">
@@ -54,5 +100,22 @@
 		from likes_shop as ls
 		left join shops as sh on ls.shop_id = sh.id  
   		where ls.user_id= #{userId};
+	</select>
+	
+	<select id="getLikesItems" resultMap="likesItem">
+		select li.user_id as user_id, li.item_id as item_id, li.color_id as color_id, li.size_id as size_id,
+		i.name, i.price, i.item_info, i.gender, i.deleted,
+		co.color,
+		si.size, 
+		im.id as image_id, im.image_pass, im.item_id,
+		sh.id as shop_id, sh.shop_name, sh.shop_name_kana
+		from likes_item as li
+		left join items as i on li.item_id = i.id 
+		left join color as co on li.color_id = co.id 
+		left join size as si on li.size_id = si.id 
+		left join images as im on i.id = im.item_id 
+		left join shops as sh on i.shop_id = sh.id
+  		where li.user_id= #{userId}
+  		order by im.id;
 	</select>
 </mapper>

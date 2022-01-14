@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.LikesItem;
 import com.example.domain.LikesShop;
 import com.example.domain.User;
 import com.example.repository.CartMapper;
@@ -61,5 +62,9 @@ public class UserService {
 	
 	public List<LikesShop> getLikesShop(Integer userId) {
 		return mapper.getLikesShop(userId);
+	}
+	
+	public List<LikesItem> getLikesItem(Integer userId) {
+		return mapper.getLikesItems(userId);
 	}
 }

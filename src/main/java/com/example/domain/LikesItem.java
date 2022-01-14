@@ -11,6 +11,12 @@ public class LikesItem {
 	private Integer colorId;
 	//どのサイズ
 	private Integer sizeId;
+	//結合用
+	private Item item;
+	//結合用
+	private Color color;
+	//結合用
+	private Size size;
 	
 	//ゲッターセッター
 	public Integer getId() {
@@ -43,10 +49,28 @@ public class LikesItem {
 	public void setSizeId(Integer sizeId) {
 		this.sizeId = sizeId;
 	}
-	
+	public Item getItem() {
+		return item;
+	}
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	public Color getColor() {
+		return color;
+	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	public Size getSize() {
+		return size;
+	}
+	public void setSize(Size size) {
+		this.size = size;
+	}
 	@Override
 	public String toString() {
 		return "LikesItem [id=" + id + ", userId=" + userId + ", ItemId=" + ItemId + ", colorId=" + colorId
-				+ ", sizeId=" + sizeId + "]";
+				+ ", sizeId=" + sizeId + ", item=" + item + ", color=" + color + ", size=" + size + "]";
 	}
+	
 }
