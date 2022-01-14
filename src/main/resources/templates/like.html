@@ -70,19 +70,19 @@
 			</div>
 			<div class="container px-4 px-lg-5 mt-5 tab-pane fade" id="shop" role="tabpanel" aria-labelledby="profile-tab">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<div class="col mb-5" th:if="${item.gender == 1}" th:each="item: ${itemList}">
+					<div class="col mb-5" th:each="likesShop: ${listLikesShop}">
 						<div class="card h-100">
 							<!-- shop image-->
-							<a th:href="@{/item/detail?id=} + ${item.id}">
+							<a th:href="@{/shop/detail?id=} + ${likesShop.shop.id}">
 								<img class="card-img-top" style="height: 230px"
-									th:src="@{/img/} + ${item.imageList[0].imagePass}"
+									th:src="@{/img/} + ${likesShop.shop.imagePass}"
 									alt="..." />
 							</a>
 							<!-- shop details-->
 							<div class="card-body p-4">
 								<div class="text-start">
 									<!-- shop name-->
-									<h5 class="fw-bolder" th:text="${item.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
+									<h5 class="fw-bolder" th:text="${likesShop.shop.shopName}" style="font-size: 13px">Fancy Product</h5>
 								</div>
 							</div>
 						</div>
