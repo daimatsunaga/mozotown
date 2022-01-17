@@ -27,13 +27,13 @@ $(function() {
   	//お気に入りから削除
     $(document).on('click', '#delete_likes_shop_btn', function () {
     $.ajax({
-        url: 'http://localhost:8080/like/deleteLikeShop',
+        url: 'http://localhost:8080/like/shop',
         dataType: 'text',
         data: { 
           userId: $("#userId").val(),
           shopId: $("#shopId").val()
         },
-		type: 'post',
+		type: 'delete',
         async: true
     }).done(function() {
       	$('#delete_likes_shop_btn').hide();
