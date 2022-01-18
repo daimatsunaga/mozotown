@@ -119,16 +119,36 @@ CREATE TABLE payment_method(
   payment_method varchar(20) not null
 );
 
-CREATE TABLE order(
+CREATE TABLE orders(
   id serial primary key not null,
   user_id bigint(20) unsigned not null,
   status integer default 0 not null,
-  price integer not null,
-  quantity integer default 1 not null,
+  total_price integer not null,
+  order_date timestamp default CURRENT_TIMESTAMP not null,
+  destination_name varchar(20) not null,
+  destination_name_kana varchar(40) not null,
+  destination_zip_code varchar(8) not null,
+  destination_address varchar(200) not null,
+  destination_phonenumber varchar(20) not null,
+  delivery_datetime timestamp not null,
+  payment_method_id bigint(20) unsigned not null,
+  FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
+  FOREIGN KEY fk_payment_method_id(payment_method_id) REFERENCES payment_method(id)
+);
+
+CREATE TABLE order_items(
+  id serial primary key not null,
+  user_id bigint(20) unsigned not null,
+  item_id bigint(20) unsigned not null,
+  color_id bigint(20) unsigned not null,
+  size_id bigint(20) unsigned not null,
+  order_id bigint(20) unsigned not null,
+  quantity integer not null,
   FOREIGN KEY fk_user_id(user_id) REFERENCES users(id),
   FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
   FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
-  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id)
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
+  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
 );
 
 INSERT INTO payment_method(payment_method) VALUES('ツケ払い');
