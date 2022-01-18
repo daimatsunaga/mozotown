@@ -148,7 +148,7 @@ CREATE TABLE order_items(
   FOREIGN KEY fk_item_id(item_id) REFERENCES items(id),
   FOREIGN KEY fk_size_id(size_id) REFERENCES size(id),
   FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
-  FOREIGN KEY fk_color_id(color_id) REFERENCES color(id),
+  FOREIGN KEY fk_order_id(order_id) REFERENCES orders(id)
 );
 
 INSERT INTO payment_method(payment_method) VALUES('ツケ払い');
