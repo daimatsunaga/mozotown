@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.repository.OrderMapper">
+	
+	<insert id="orderConfirm">
+	   insert into orders(user_id, total_price, destination_name, destination_name_kana, destination_zip_code, 
+	   destination_address, destination_phonenumber, delivery_datetime, payment_method_id) 
+	   values(#{userId},#{totalPrice},#{destinationName},#{destinationNameKana},#{destinationZipCode},
+	   #{destinationAddress},#{destinationPhonenumber},#{deliveryDatetime},#{paymentMethodId})
+	</insert>
+
+</mapper>
