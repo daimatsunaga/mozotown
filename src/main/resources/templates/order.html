@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お届け先・配送方法・お支払い方法 - MOZOTOWN</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+  <!-- ヘッダー -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="./toppage.html" style="font-size: 24px;">MOZOTOWN</a>
+    </div>
+  </nav>
+
+  <div class="container mb-4">
+    <div class="row">
+      <h1 class="align-self-end mb-4" style="font-size: 24px;">注文内容の確認</h1>
+    </div>
+
+    <div class="row">
+      <div class="offset-1 col-10">
+        <table class="table table-striped">
+          <tbody>
+            <tr th:each="cart:${session.cartItemList}">
+              <td class="col-4" style="vertical-align: middle;" scope="row">
+                <img style="width: 75%;" src="/Users/matsunagadai/Downloads/practice:bootstrap/image/進む松永.jpg" alt="新規登録アイコン">
+              </td>
+              <td style="vertical-align: middle;">
+                <div>DIESEL</div>
+                <div>DIESEL SS22 レディース デニム</div>
+                <div>カラー：インディゴブルー</div>
+                <div>サイズ：24inch</div>
+                <div>数量：2</div>
+              <td style="vertical-align: middle;">
+                <div style="color: red;">￥29,700</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container mb-3 mt-3">
+      <h3 class="text-center" style="font-size: 24px;">お届け先・配送方法・お支払い方法</h3>
+      <div class="row d-flex justify-content-center">
+        <form class="col-6 rounded" method="post" action="item_list_pizza.html">
+          <fieldset>
+            <hr width="100%">
+            <div class="form-group col">
+              <label for="inputName">お名前:</label
+              ><label
+                class="control-label"
+                style="color: red"
+                for="inputError"
+                >お名前を入力してください</label
+              >
+              <input
+                type="text"
+                id="inputName"
+                class="form-control"
+                placeholder="例）山田太郎"
+              />
+            </div>
+
+            <div class="form-group col">
+              <label for="inputNameKana">お名前（カナ）:</label
+              ><label
+                class="control-label"
+                style="color: red"
+                for="inputError"
+                >お名前（カナ）を入力してください</label
+              >
+              <input
+                type="text"
+                id="inputNameKana"
+                class="form-control"
+                placeholder="例）ヤマダタロウ"
+              />
+            </div>
+
+            <div class="form-group col">
+              <label for="inputZipcode">郵便番号:</label>
+              <label
+                class="control-label"
+                style="color: red"
+                for="inputError"
+                >郵便番号を入力してください</label
+              >
+              <input type="button" value="住所検索" />
+              <input
+                type="text"
+                id="inputZipcode"
+                class="form-control"
+                placeholder="例）123-4567"
+              />
+            </div>
+            <div class="form-group col">
+              <label for="inputAddress">住所:</label>
+              <label
+                class="control-label"
+                style="color: red"
+                for="inputError"
+                >住所を入力してください</label
+              >
+              <input
+                type="text"
+                id="inputAddress"
+                class="form-control"
+                placeholder="例）東京都新宿区３−２１−６"
+              />
+            </div>
+
+            <div class="form-group col">
+              <label for="inputPhoneNumber">電話番号:</label>
+              <label
+                class="control-label"
+                style="color: red"
+                for="inputError"
+                >電話番号を入力してください</label
+              >
+              <input
+                type="text"
+                id="inputPhoneNumber"
+                class="form-control"
+                placeholder="例）09012345678"
+              />
+            </div>
+            <hr width="100%">
+            <div class="form-group col">
+              <label for="inputDeliveryDate">配達日時:</label>
+              <label class="control-label" style="color: red" for="inputPeriod">
+              配達日時を入力してください</label>
+              <div class="d-flex">
+                <div class="col-md-6">
+                  <input
+                    type="date"
+                    name="orderDate"
+                    id="inputDeliveryDate"
+                    class="form-control input-sm"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="10" checked="checked"/>
+                      10時
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="11"/>
+                      11時
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="12"/>
+                      12時 </label
+                    ><br />
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="13"/>
+                      13時
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="14"/>
+                      14時
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="15"/>
+                      15時 </label
+                    ><br />
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="16"/>
+                      16時
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="17"/>
+                      17時
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="deliveryTime" value="18"/>
+                      18時 </label
+                    ><br />
+                  </div>
+                </div>   
+             </div>
+            </div>
+            <hr width="100%">
+            <h3 class="text-center" style="font-size: 24px;">お支払い方法</h3>
+            <table class="table table-striped item-list-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="text-center">代金引換</div>
+                  </td>
+                  <td>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label class="radio-inline">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="1"
+                            checked="checked"
+                          />
+                          代金引換
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text-center">クレジットカード決済</div>
+                  </td>
+                  <td>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label class="radio-inline">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="2"
+                            checked="checked"
+                          />
+                          クレジットカード </label
+                        ><br /><br />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            
+            <p style="color: #808080; font-size: 12px; text-align: center;">会員登録には、利用規約およびプライバシーポリシーへの同意が必要です。</p>
+  
+            <div class="form-group d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">上記の内容で注文する</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+  <!-- Footer-->
+  <footer class="py-5" style="background-color: #f0f0f0;">
+    <div class="container"><p class="m-0 text-center" style="color: #808080; font-size: 10px;">Copyright &copy; Dai Matsunaga Website 2021</p></div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script th:src="@{/js/bootstrap.js}"></script>
+  
+</body>
+</html>
