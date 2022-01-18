@@ -58,6 +58,8 @@
       <h3 class="text-center" style="font-size: 24px;">お届け先・配送方法・お支払い方法</h3>
       <div class="row d-flex justify-content-center">
         <form class="col-6 rounded" method="post" th:action="@{/order/confirm}">
+        <input type="hidden" name="totalPrice" th:value="${totalPrice}">
+        <input type="hidden" name="userId" th:value="${session.user.id}">
           <fieldset>
             <hr width="100%">
             <div class="form-group col">
@@ -71,6 +73,7 @@
               <input
                 type="text"
                 id="inputName"
+                name="destinationName"
                 class="form-control"
                 placeholder="例）山田太郎"
               />
@@ -86,6 +89,7 @@
               >
               <input
                 type="text"
+                name="destinationNameKana"
                 id="inputNameKana"
                 class="form-control"
                 placeholder="例）ヤマダタロウ"
@@ -103,6 +107,7 @@
               <input type="button" value="住所検索" id="get_address_btn" />
               <input
                 type="text"
+                name="destinationZipCode"
                 id="inputZipcode"
                 class="form-control"
                 placeholder="例）123-4567"
@@ -118,6 +123,7 @@
               >
               <input
                 type="text"
+                name="destinationAddress"
                 id="inputAddress"
                 class="form-control"
                 placeholder="例）東京都新宿区３−２１−６"
@@ -134,6 +140,7 @@
               >
               <input
                 type="text"
+                name="destinationPhonenumber"
                 id="inputPhoneNumber"
                 class="form-control"
                 placeholder="例）09012345678"
@@ -148,7 +155,7 @@
                 <div class="col-md-6">
                   <input
                     type="date"
-                    name="orderDate"
+                    name="deliveryDate"
                     id="inputDeliveryDate"
                     class="form-control input-sm"
                   />
@@ -209,7 +216,7 @@
                         <label class="radio-inline">
                           <input
                             type="radio"
-                            name="paymentMethod"
+                            name="paymentMethodId"
                             value="1"
                             checked="checked"
                           />
@@ -229,9 +236,8 @@
                         <label class="radio-inline">
                           <input
                             type="radio"
-                            name="paymentMethod"
+                            name="paymentMethodId"
                             value="2"
-                            checked="checked"
                           />
                           クレジットカード </label
                         ><br /><br />
