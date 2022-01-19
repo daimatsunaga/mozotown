@@ -26,4 +26,7 @@ public interface CartMapper {
 	
 	//カート内の商品数
 	public Integer sumCart(Integer userId);
+	
+	//注文後カートの中身を削除
+	public void deleteByUserId(Integer userId);
 }

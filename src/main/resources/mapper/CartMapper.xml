@@ -104,7 +104,7 @@
 	</select>
 	
 	<delete id="deleteById">
-		delete from cart where id = #{id}
+		delete from cart where id = #{id};
 	</delete>
 	
 	<update id="updateQuantity">
@@ -117,4 +117,8 @@
 		from cart 
   		where user_id = #{userId};
 	</select>
+	
+	<delete id="deleteByUserId">
+		delete from cart where user_id = #{userId};
+	</delete>
 </mapper>
