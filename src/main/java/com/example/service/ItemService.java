@@ -27,11 +27,15 @@ public class ItemService {
 	}
 	
 	public List<Item> searchItems(List<String> keywordList) {
-		List<Item> itemList = mapper.searchItems(keywordList);
-		if(itemList.size() == 0) {
+		try {
+			List<Item> itemList = mapper.searchItems(keywordList);
+			if(itemList.size() == 0) {
+				return null;
+			} else {
+				return itemList;
+			}
+		} catch (Exception e) {
 			return null;
-		} else {
-			return itemList;
 		}
 	}
 }
