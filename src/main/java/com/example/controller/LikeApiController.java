@@ -4,7 +4,6 @@ package com.example.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +28,7 @@ public class LikeApiController {
 	}
 	
 	@DeleteMapping("/shop")
-	public void deleteLikeShop(Integer userId, Integer shopId, Model model) {
+	public void deleteLikeShop(Integer userId, Integer shopId) {
 		mapper.deleteLikeShop(userId, shopId);
 	}
 	
