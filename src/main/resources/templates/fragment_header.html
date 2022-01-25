@@ -16,11 +16,11 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container px-4 px-lg-5">
 				<a class="navbar-brand" th:href="@{/item}">MOZOTOWN</a>
-				<form action="#" method="get" class="col-5">
+				<form th:action="@{/item/search}" method="get" class="col-5">
 					<div class="col-auto">
 						<div class="input-group mb-1">
 							<input type="text" class="form-control" id="inlineFormInputGroup"
-								placeholder="全てのアイテムから探す" />
+								placeholder="全てのアイテムから探す" name="keyword" />
 							<button class="btn btn-outline-success my-2 my-sm-0"
 								type="submit">Search</button>
 						</div>

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,18 @@ public class ItemController {
 		Item item = service.findById(id);
 		model.addAttribute("item", item);
 		return "item_detail";
+	}
+	
+	@GetMapping("/search")
+	public String searchItems(String keyword, Model model) {
+		String[] keywords = keyword.replace("　", " ").replaceAll("\\s{2,}", " ").trim().split(" ");
+		List<String> keywordList = Arrays.asList(keywords);
+		List<Item> itemList = service.searchItems(keywordList);
+		if(itemList == null) {
+			model.addAttribute("error", "該当の商品はございません。");
+		} else {
+			model.addAttribute("itemList", itemList);
+		}
+		return "top_page";
 	}
 }
