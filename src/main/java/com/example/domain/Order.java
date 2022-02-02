@@ -27,6 +27,8 @@ public class Order {
 	private Timestamp deliveryDatetime;
 	
 	private Integer paymentMethodId;
+	
+	private String token;
 
 	public Integer getId() {
 		return id;
@@ -124,14 +126,24 @@ public class Order {
 		this.paymentMethodId = paymentMethodId;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", userId=" + userId + ", status=" + status + ", totalPrice=" + totalPrice
 				+ ", orderDate=" + orderDate + ", destinationName=" + destinationName + ", destinationNameKana="
 				+ destinationNameKana + ", destinationZipCode=" + destinationZipCode + ", destinationAddress="
 				+ destinationAddress + ", destinationPhonenumber=" + destinationPhonenumber + ", deliveryDatetime="
-				+ deliveryDatetime + ", paymentMethodId=" + paymentMethodId + "]";
+				+ deliveryDatetime + ", paymentMethodId=" + paymentMethodId + ", token=" + token + "]";
 	}
+
+
 	
 	
 }

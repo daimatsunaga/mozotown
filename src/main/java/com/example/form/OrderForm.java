@@ -24,6 +24,8 @@ public class OrderForm {
 	private Integer deliveryTime;
 	
 	private Integer paymentMethodId;
+	
+	private String token;
 
 	public Integer getUserId() {
 		return userId;
@@ -105,14 +107,24 @@ public class OrderForm {
 		this.paymentMethodId = paymentMethodId;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderForm [userId=" + userId + ", totalPrice=" + totalPrice + ", destinationName=" + destinationName
 				+ ", destinationNameKana=" + destinationNameKana + ", destinationZipCode=" + destinationZipCode
 				+ ", destinationAddress=" + destinationAddress + ", destinationPhonenumber=" + destinationPhonenumber
 				+ ", deliveryDate=" + deliveryDate + ", deliveryTime=" + deliveryTime + ", paymentMethodId="
-				+ paymentMethodId + "]";
+				+ paymentMethodId + ", token=" + token + "]";
 	}
+
+
 	
 	
 }
