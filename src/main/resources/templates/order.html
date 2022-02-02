@@ -215,6 +215,7 @@
                       <div class="col-sm-12">
                         <label class="radio-inline">
                           <input
+                          	id="cash"
                             type="radio"
                             name="paymentMethodId"
                             value="1"
@@ -235,12 +236,24 @@
                       <div class="col-sm-12">
                         <label class="radio-inline">
                           <input
+                        	id="card"
                             type="radio"
                             name="paymentMethodId"
                             value="2"
                           />
-                          クレジットカード </label
-                        ><br /><br />
+                          クレジットカード </label><br /><br />
+                        <!-- クレジットカード情報がname="token"としてhiddenで送られる -->
+		                <span id="creditInfo" style="display: none;">
+					  		<script
+							  type="text/javascript"
+							  src="https://checkout.pay.jp/"
+							  class="payjp-button"
+							  data-key="pk_test_7ff9fe92761f2a3e7771de38"
+							  data-submit-text="上記の情報で支払う"
+							  data-partial="true"
+							  data-token-name="token"
+							></script>
+						</span>
                       </div>
                     </div>
                   </td>
@@ -268,5 +281,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script th:src="@{/js/bootstrap.js}"></script>
   <script th:src="@{/js/get_address.js}"></script>
+  <script th:src="@{/js/credit.js}"></script>
 </body>
 </html>
